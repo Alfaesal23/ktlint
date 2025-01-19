@@ -1,5 +1,5 @@
 plugins {
-    `ktlint-kotlin-common` // replace it with 'org.jetbrains.kotlin.jvm'
+    id("ktlint-kotlin-common")
     `java-library`
     `maven-publish`
 }
@@ -8,14 +8,14 @@ group = "com.github.username"
 
 val sourcesJar by tasks.registering(Jar::class) {
     dependsOn(tasks.classes)
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
+    archiveClassifier = "sources"
+    from(sourceSets.main.map { it.allSource })
 }
 
 val javadocJar by tasks.registering(Jar::class) {
     dependsOn(tasks.javadoc)
-    archiveClassifier.set("javadoc")
-    from(tasks.javadoc.get().destinationDir)
+    archiveClassifier = "javadoc"
+    from(tasks.javadoc.map { it.destinationDir!! })
 }
 
 artifacts {
@@ -23,46 +23,40 @@ artifacts {
     archives(javadocJar)
 }
 
-val ktlint: Configuration = configurations.create("ktlint")
+val ktlint: Configuration by configurations.creating
 
 dependencies {
-    ktlint(projects.ktlint)
+    ktlint(projects.ktlintCli)
 
-    compileOnly(projects.ktlintCore)
+    implementation(projects.ktlintCliRulesetCore)
+    implementation(projects.ktlintRuleEngineCore)
 
-    testImplementation(projects.ktlintCore)
     testImplementation(projects.ktlintTest)
-    testImplementation(libs.junit5)
-    testImplementation(libs.assertj)
+    testRuntimeOnly(libs.slf4j)
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
-
-tasks.register<JavaExec>("ktlint") {
+val ktlintCheck by tasks.registering(JavaExec::class) {
     dependsOn(tasks.classes)
     group = LifecycleBasePlugin.VERIFICATION_GROUP
-    mainClass.set("com.pinterest.ktlint.Main")
-    // adding compiled classes to the classpath so that ktlint would validate project"s sources
-    // using its own ruleset (in other words to dogfood)
-    classpath = ktlint + sourceSets.main.get().output
-    args("--debug", "src/**/*.kt")
-}.let {
-    tasks.check.get().dependsOn(it)
+    mainClass = "com.pinterest.ktlint.Main"
+    // Adding compiled classes of this ruleset to the classpath so that ktlint validates the ruleset using its own ruleset
+    classpath(ktlint, sourceSets.main.map { it.output })
+    args("--log-level=debug", "src/**/*.kt")
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("mavenJava") {
-                pom {
-                    licenses {
-                        license {
-                            name.set("The Apache Software License, Version 2.0")
-                            url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                            distribution.set("repo")
-                        }
+tasks.check {
+    dependsOn(ktlintCheck)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            pom {
+                licenses {
+                    license {
+                        name = "The Apache Software License, Version 2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                        distribution = "repo"
                     }
                 }
             }

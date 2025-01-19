@@ -1,13 +1,13 @@
 plugins {
-    `ktlint-kotlin-common`
-    `ktlint-publication`
+    id("ktlint-publication-library")
 }
 
 dependencies {
-    implementation(projects.ktlintCore)
-    implementation(libs.logging)
+    implementation(projects.ktlintLogger)
+
+    api(projects.ktlintCliRulesetCore)
+    api(projects.ktlintRuleEngineCore)
 
     testImplementation(projects.ktlintTest)
-    testImplementation(libs.junit5)
-    testImplementation(libs.assertj)
+    testRuntimeOnly(libs.logback)
 }

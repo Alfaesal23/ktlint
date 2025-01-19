@@ -2,7 +2,1543 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
-## Unreleased
+## [1.5.0] - 2024-12-04
+
+The release of Kotlin 2.1 is the primary reason for publishing this release earlier than planned. Because of the removal of some language elements in Kotlin 2.1, the embedded Kotlin compiler in KtLint blocked Kotlinter users from upgrading to Kotlin 2.1.
+
+### 🆕 Features
+
+* Add missing space between `fun` keyword and identifier when latter is wrapped between backticks - [#2890](https://github.com/pinterest/ktlint/pull/2890), by @paul-dingemans
+
+* Add configuration setting for constant names in `property-naming` rule - [#2893](https://github.com/pinterest/ktlint/pull/2893), by @paul-dingemans
+
+* Allow backing property to be defined in the companion object (`backing-property-naming`) - [#2895](https://github.com/pinterest/ktlint/pull/2895), by @paul-dingemans
+
+### 🔧 Fixes
+
+* Ignore multi dollar string interpolation prefix in `string-template-indent` rule - [#2888](https://github.com/pinterest/ktlint/pull/2888), by @paul-dingemans
+
+* Wrap the expression body in case `.editorconfig` property `ktlint_function_signature_body_expression_wrapping` is set to `always` - [#2873](https://github.com/pinterest/ktlint/pull/2873), by @paul-dingemans
+
+* Fix false positive when empty parameter list is in between trailing lambda's of a nested call expression - [#2891](https://github.com/pinterest/ktlint/pull/2891), by @paul-dingemans
+
+* Do not wrap a context receiver in a function parameter type reference - [#2892](https://github.com/pinterest/ktlint/pull/2892), by @paul-dingemans
+
+* Allow comment before parameter list in function literal (`function-literal`) - [#2894](https://github.com/pinterest/ktlint/pull/2894), by @paul-dingemans
+
+### 📦 Dependencies
+
+* chore(deps): update plugin com.gradle.develocity to v3.18.2 - [#2865](https://github.com/pinterest/ktlint/pull/2865), by @renovate[bot]
+
+* chore(deps): update dependency gradle to v8.11.1 - [#2875](https://github.com/pinterest/ktlint/pull/2875), by @renovate[bot]
+
+* fix(deps): update dependency io.github.hakky54:logcaptor to v2.10.0 - [#2874](https://github.com/pinterest/ktlint/pull/2874), by @renovate[bot]
+
+* fix(deps): update dependency org.jetbrains.kotlin:kotlin-gradle-plugin to v2.1.0-rc2 - [#2871](https://github.com/pinterest/ktlint/pull/2871), by @renovate[bot]
+
+* fix(deps): update dependency io.github.oshai:kotlin-logging-jvm to v7.0.3 - [#2883](https://github.com/pinterest/ktlint/pull/2883), by @renovate[bot]
+
+* fix(deps): update kotlin monorepo to v2.1.0 - [#2880](https://github.com/pinterest/ktlint/pull/2880), by @renovate[bot]
+
+* fix(deps): update dependency com.github.ajalt.clikt:clikt to v5.0.2 - [#2886](https://github.com/pinterest/ktlint/pull/2886), by @renovate[bot]
+
+* chore(deps): update plugin org.gradle.toolchains.foojay-resolver-convention to v0.9.0 - [#2887](https://github.com/pinterest/ktlint/pull/2887), by @renovate[bot]
+
+* fix(deps): update dependency dev.drewhamilton.poko:poko-gradle-plugin to v0.18.0 - [#2889](https://github.com/pinterest/ktlint/pull/2889), by @renovate[bot]
+
+## [1.4.1] - 2024-11-05
+
+### 🔧 Fixes
+ 
+* Catch java.lang.NoSuchFieldError when looking for WHEN_ENTRY_GUARD in kotlin version 2.0.1 - [#2857](https://github.com/pinterest/ktlint/pull/2857), by @paul-dingemans
+
+### 📦 Dependencies
+ 
+* chore(deps): update plugin shadow to v8.3.5 - [#2851](https://github.com/pinterest/ktlint/pull/2851), by @renovate[bot]
+* fix(deps): update dependency org.jetbrains.kotlin:kotlin-gradle-plugin to v2.1.0-rc - [#2853](https://github.com/pinterest/ktlint/pull/2853), by @renovate[bot]
+
+## [1.4.0] - 2024-10-24
+
+### 🆕 Features
+
+
+* Suppress `backing-property-naming` on `@Suppress("PropertyName")` - [#2741](https://github.com/pinterest/ktlint/pull/2741), by @paul-dingemans
+
+* Check that code can still be parsed after a format - [#2742](https://github.com/pinterest/ktlint/pull/2742), by @paul-dingemans
+
+* Support suppressing backing-property-naming via ObjectPropertyName - [#2751](https://github.com/pinterest/ktlint/pull/2751), by @Goooler
+
+* Ignore properties starting with `_` in `backing-property-naming` rule - [#2753](https://github.com/pinterest/ktlint/pull/2753), by @paul-dingemans
+
+* Suppress `backing-property-naming` rule with `@Suppress("LocalVariableName")` - [#2785](https://github.com/pinterest/ktlint/pull/2785), by @paul-dingemans
+
+* Do not repeat formatting if file is unchanged - [#2805](https://github.com/pinterest/ktlint/pull/2805), by @paul-dingemans
+
+* Add new rule `when-entry-bracing` - [#2829](https://github.com/pinterest/ktlint/pull/2829), by @paul-dingemans
+
+* Add `.editorconfig` property `ij_kotlin_indent_before_arrow_on_new_line` - [#2838](https://github.com/pinterest/ktlint/pull/2838), by @paul-dingemans
+
+* Add CLI option `--stdin-path` to provide a virtual file location for stdin - [#2836](https://github.com/pinterest/ktlint/pull/2836), by @adecker89
+
+* Add property `.editorconfig` property `ktlint_enum_entry_name_casing` - [#2839](https://github.com/pinterest/ktlint/pull/2839), by @paul-dingemans
+
+### 🔧 Fixes
+
+
+* Prevent line separators to be changed from CRLF to LF - [#2752](https://github.com/pinterest/ktlint/pull/2752), by @paul-dingemans
+
+* fix: don't remove arrow from lambdas that are when/if leaf nodes - [#2758](https://github.com/pinterest/ktlint/pull/2758), by @tKe
+
+* Fix false positive in `no-semi` rule for enum class without enum entries - [#2774](https://github.com/pinterest/ktlint/pull/2774), by @paul-dingemans
+
+* Prevent conflict between `multiline-expression-wrapping` and `function-signature` - [#2775](https://github.com/pinterest/ktlint/pull/2775), by @paul-dingemans
+
+* Ignore `max_line_length` property unless `max-line-length` rule is enabled  - [#2783](https://github.com/pinterest/ktlint/pull/2783), by @paul-dingemans
+
+* Fix false positive in `class-signature` when EOL comment is between a class annotation and other class modifier - [#2786](https://github.com/pinterest/ktlint/pull/2786), by @paul-dingemans
+
+* Fix globs ending with `**` - [#2787](https://github.com/pinterest/ktlint/pull/2787), by @paul-dingemans
+
+* Return exit code 1 in case violations have been found but file is unchanged - [#2803](https://github.com/pinterest/ktlint/pull/2803), by @paul-dingemans
+
+* Ignore missing whitespace after trailing comma in single line parameter value list - [#2806](https://github.com/pinterest/ktlint/pull/2806), by @paul-dingemans
+
+* Remove HEADER_KEYWORD & IMPL_KEYWORD - [#2810](https://github.com/pinterest/ktlint/pull/2810), by @3flex
+
+* Function signature rule ignores context receiver when on separate line - [#2814](https://github.com/pinterest/ktlint/pull/2814), by @paul-dingemans
+
+* Do not remove imports for which the fully qualified path is identical to the package name - [#2822](https://github.com/pinterest/ktlint/pull/2822), by @paul-dingemans
+
+* Fix indentation of a multiline parameter list inside a function literal for code style `ktlint_official` - [#2823](https://github.com/pinterest/ktlint/pull/2823), by @paul-dingemans
+
+* Do not insert a trailing comma in a multiline when-entry containing a guard - [#2825](https://github.com/pinterest/ktlint/pull/2825), by @paul-dingemans
+
+* Fix wrapping of expression body when `max_line_length` not set - [#2833](https://github.com/pinterest/ktlint/pull/2833), by @paul-dingemans
+
+### 📦 Dependencies
+
+
+* Update dependency io.github.oshai:kotlin-logging-jvm to v7 - [#2701](https://github.com/pinterest/ktlint/pull/2701), by @renovate[bot]
+
+* Update dependency org.assertj:assertj-core to v3.26.3 - [#2738](https://github.com/pinterest/ktlint/pull/2738), by @renovate[bot]
+
+* Update mikepenz/release-changelog-builder-action action to v5 - [#2756](https://github.com/pinterest/ktlint/pull/2756), by @renovate[bot]
+
+* chore(deps): update plugin kotlinx-binary-compatibiltiy-validator to v0.16.3 - [#2759](https://github.com/pinterest/ktlint/pull/2759), by @renovate[bot]
+
+* fix(deps): update dependency org.slf4j:slf4j-simple to v2.0.16 - [#2764](https://github.com/pinterest/ktlint/pull/2764), by @renovate[bot]
+
+* Migrate to com.gradleup.shadow - [#2763](https://github.com/pinterest/ktlint/pull/2763), by @Goooler
+
+* chore(deps): update gradle/actions action to v4 - [#2760](https://github.com/pinterest/ktlint/pull/2760), by @renovate[bot]
+
+* chore(deps): update plugin com.gradle.develocity to v3.18.1 - [#2792](https://github.com/pinterest/ktlint/pull/2792), by @renovate[bot]
+
+* chore(deps): update dependency gradle to v8.10.2 - [#2812](https://github.com/pinterest/ktlint/pull/2812), by @renovate[bot]
+
+* chore(deps): update plugin shadow to v8.3.3 - [#2820](https://github.com/pinterest/ktlint/pull/2820), by @renovate[bot]
+
+* fix(deps): update dependency com.github.ajalt.clikt:clikt to v5.0.1 - [#2828](https://github.com/pinterest/ktlint/pull/2828), by @renovate[bot]
+
+* chore(deps): update kotlin monorepo to v2.0.21 - [#2831](https://github.com/pinterest/ktlint/pull/2831), by @renovate[bot]
+
+* fix(deps): update dependency org.ec4j.core:ec4j-core to v1.1.0 - [#2832](https://github.com/pinterest/ktlint/pull/2832), by @renovate[bot]
+
+* fix(deps): update dependency org.jetbrains.kotlin:kotlin-gradle-plugin to v2.1.0-beta2 - [#2834](https://github.com/pinterest/ktlint/pull/2834), by @renovate[bot]
+
+* fix(deps): update dependency dev.drewhamilton.poko:poko-gradle-plugin to v0.17.2 - [#2837](https://github.com/pinterest/ktlint/pull/2837), by @renovate[bot]
+
+* fix(deps): update dependency org.junit.jupiter:junit-jupiter to v5.11.3 - [#2840](https://github.com/pinterest/ktlint/pull/2840), by @renovate[bot]
+
+* chore(deps): update actions/checkout digest to 11bd719 - [#2841](https://github.com/pinterest/ktlint/pull/2841), by @renovate[bot]
+
+## [1.3.1] - 2024-07-02
+
+### 🔧 Fixes
+* Add link for backing-property-naming, correct binary-expression-wrapping - [#2704](https://github.com/pinterest/ktlint/pull/2704), by @rsmith20
+* Do not insert a whitespace element as first or last child inside a composite element - [#2715](https://github.com/pinterest/ktlint/pull/2715), by @paul-dingemans
+* Do not rewrite a class to a single line signature in case it contains an EOL comment - [#2716](https://github.com/pinterest/ktlint/pull/2716), by @paul-dingemans
+* Fix false positive when anonymous function is used as value argument - [#2718](https://github.com/pinterest/ktlint/pull/2718), by @paul-dingemans
+* Fix suppression handling when 'formatter:on' not properly specified - [#2719](https://github.com/pinterest/ktlint/pull/2719), by @paul-dingemans
+* Fix false positive when primary constructor has no arguments and a secondary constructor exists - [#2717](https://github.com/pinterest/ktlint/pull/2717), by @paul-dingemans
+* Ignore suppressions for no-unused-imports rule - [#2720](https://github.com/pinterest/ktlint/pull/2720), by @paul-dingemans
+* Ignore suppressions in rule `no-unused-imports` - [#2725](https://github.com/pinterest/ktlint/pull/2725), by @paul-dingemans
+* Fix false alert `Format was not able to resolve all violations which (theoretically) can be autocorrected` - [#2727](https://github.com/pinterest/ktlint/pull/2727), by @paul-dingemans
+* Fix "unset" value for property ktlint_chain_method_rule_force_multiline_when_chain_operator_count_greater_or_equal_than - [#2728](https://github.com/pinterest/ktlint/pull/2728), by @paul-dingemans
+
+### 📦 Dependencies
+
+* Update dependency gradle to v8.8 - [#2680](https://github.com/pinterest/ktlint/pull/2680), by @renovate[bot]
+* Update plugin com.gradle.develocity to v3.17.5 - [#2697](https://github.com/pinterest/ktlint/pull/2697), by @renovate[bot]
+* Update actions/checkout digest to 692973e - [#2699](https://github.com/pinterest/ktlint/pull/2699), by @renovate[bot]
+* Update dependency io.github.hakky54:logcaptor to v2.9.3 - [#2707](https://github.com/pinterest/ktlint/pull/2707), by @renovate[bot]
+* Update dependency org.junit.jupiter:junit-jupiter to v5.10.3 - [#2721](https://github.com/pinterest/ktlint/pull/2721), by @renovate[bot]
+
+### 💬 Other
+
+* Remove sdkman - [#2693](https://github.com/pinterest/ktlint/pull/2693), by @paul-dingemans
+
+## [1.3.0] - 2024-06-04
+
+### 🆕 Features
+
+* Support partial formatting - [#2631](https://github.com/pinterest/ktlint/pull/2631), by @paul-dingemans
+
+* Suppress `property-name` rule for `ObjectPropertyName` or `PrivatePropertyName` - [#2643](https://github.com/pinterest/ktlint/pull/2643), by @paul-dingemans
+
+* Let API Consumer decide whether a LintError has to be autocorrected, or not - [#2671](https://github.com/pinterest/ktlint/pull/2671), by @paul-dingemans
+
+* Promote experimental rules to non-experimental - [#2674](https://github.com/pinterest/ktlint/pull/2674), by @paul-dingemans
+  - [backing-property-naming](https://pinterest.github.io/ktlint/latest/rules/standard/#backing-property-naming)
+  - [binary-expression-wrapping](https://pinterest.github.io/ktlint/latest/rules/standard/#binary-expression-wrapping)
+  - [chain-method-continuation](https://pinterest.github.io/ktlint/latest/rules/standard/#chain-method-continuation)
+  - [class-signature](https://pinterest.github.io/ktlint/latest/rules/standard/#class-signature)
+  - [condition-wrapping](https://pinterest.github.io/ktlint/latest/rules/standard/#condition-wrapping)
+  - [function-expression-body](https://pinterest.github.io/ktlint/latest/rules/standard/#function-expression-body)
+  - [function-literal](https://pinterest.github.io/ktlint/latest/rules/standard/#function-literal)
+  - [function-type-modifier-spacing](https://pinterest.github.io/ktlint/latest/rules/standard/#function-type-modifier-spacing)
+  - [multiline-loop](https://pinterest.github.io/ktlint/latest/rules/standard/#multiline-loop)
+
+### 🔧 Fixes
+
+
+* Do not wrap operation reference after multiline string template - [#2591](https://github.com/pinterest/ktlint/pull/2591), by @paul-dingemans
+
+* Ignore max line length in case the line contains only a string template followed by a comma - [#2598](https://github.com/pinterest/ktlint/pull/2598), by @paul-dingemans
+
+* Ignore nested reference expressions in `chain-method-continuation` - [#2606](https://github.com/pinterest/ktlint/pull/2606), by @paul-dingemans
+
+* Prevent exception in `binary-expression-wrapping` rule - [#2607](https://github.com/pinterest/ktlint/pull/2607), by @paul-dingemans
+
+* Do not merge opening quotes of multiline string template with (single line) function signature - [#2609](https://github.com/pinterest/ktlint/pull/2609), by @paul-dingemans
+
+* Fix replacement of redundant curly braces - [#2617](https://github.com/pinterest/ktlint/pull/2617), by @paul-dingemans
+
+* Set and reset Locale to pass test for non-english contributor. - [#2622](https://github.com/pinterest/ktlint/pull/2622), by @Jaehwa-Noh
+
+* Fix unwanted whitespace between super class constructor and its argument list - [#2630](https://github.com/pinterest/ktlint/pull/2630), by @tKe
+
+* Fix typo's - [#2641](https://github.com/pinterest/ktlint/pull/2641), by @paul-dingemans
+
+* Handle trailing space on preceding line in call to `lineLengthWithoutNewlinePrefix` - [#2644](https://github.com/pinterest/ktlint/pull/2644), by @paul-dingemans
+
+* Fix KDoc for RuleSetProviderV3 - [#2645](https://github.com/pinterest/ktlint/pull/2645), by @gumimin
+
+* Fix not checking for spacing around binary operators inside unary expression - [#2653](https://github.com/pinterest/ktlint/pull/2653), by @cflee
+
+* Fix `blank line before declarations` rule code example - [#2657](https://github.com/pinterest/ktlint/pull/2657), by @k-taro56
+
+* Fixed [{ }] notation for issue #2675 - [#2677](https://github.com/pinterest/ktlint/pull/2677), by @Jolanrensen
+
+* Simplify default properties loading - [#2679](https://github.com/pinterest/ktlint/pull/2679), by @Goooler
+
+### 📦 Dependencies
+
+* Update dependency org.jetbrains.dokka:dokka-gradle-plugin to v1.9.20 - [#2590](https://github.com/pinterest/ktlint/pull/2590), by @renovate[bot]
+
+* Update softprops/action-gh-release action to v2 - [#2600](https://github.com/pinterest/ktlint/pull/2600), by @renovate[bot]
+
+* Update dependency io.github.detekt.sarif4k:sarif4k to v0.6.0 - [#2605](https://github.com/pinterest/ktlint/pull/2605), by @renovate[bot]
+
+* Update dependency gradle to v8.7 - [#2616](https://github.com/pinterest/ktlint/pull/2616), by @renovate[bot]
+
+* Migrate to develocity plugin - [#2625](https://github.com/pinterest/ktlint/pull/2625), by @Goooler
+
+* Update dependency org.slf4j:slf4j-simple to v2.0.13 - [#2632](https://github.com/pinterest/ktlint/pull/2632), by @renovate[bot]
+
+* Update gradle/wrapper-validation-action action to v3 - [#2633](https://github.com/pinterest/ktlint/pull/2633), by @renovate[bot]
+
+* Update dependency io.github.oshai:kotlin-logging-jvm to v6.0.9 - [#2634](https://github.com/pinterest/ktlint/pull/2634), by @renovate[bot]
+
+* Update dependency com.github.ajalt.clikt:clikt to v4.4.0 - [#2647](https://github.com/pinterest/ktlint/pull/2647), by @renovate[bot]
+
+* Update kotlin monorepo to v1.9.24 - [#2649](https://github.com/pinterest/ktlint/pull/2649), by @renovate[bot]
+
+* Update plugin com.gradle.develocity to v3.17.4 - [#2660](https://github.com/pinterest/ktlint/pull/2660), by @renovate[bot]
+
+* Update dependency dev.drewhamilton.poko:poko-gradle-plugin to v0.15.3 - [#2662](https://github.com/pinterest/ktlint/pull/2662), by @renovate[bot]
+
+* Update actions/checkout digest to a5ac7e5 - [#2664](https://github.com/pinterest/ktlint/pull/2664), by @renovate[bot]
+
+* Update dependency org.assertj:assertj-core to v3.26.0 - [#2669](https://github.com/pinterest/ktlint/pull/2669), by @renovate[bot]
+
+## [1.2.1] - 2024-02-29
+
+### 🆕 Features
+None
+
+### 🔧 Fixes
+* Mark new rules as experimental - [#2579](https://github.com/pinterest/ktlint/pull/2579), by @paul-dingemans
+* Fix null byte as default value for "--pattern-from-stdin" - [#2580](https://github.com/pinterest/ktlint/pull/2580), by @paul-dingemans
+* Fix handling of "--reporter" CLI parameter - [#2581](https://github.com/pinterest/ktlint/pull/2581), by @paul-dingemans
+
+## [1.2.0] - 2024-02-28
+
+### 🆕 Features
+
+
+* Break dependency between string-template-indent and multiline-expression-wrapping - [#2505](https://github.com/pinterest/ktlint/pull/2505), by @paul-dingemans
+
+* Allow string template to exceed max line length when it is the only element on a line - [#2480](https://github.com/pinterest/ktlint/pull/2480), by @paul-dingemans
+
+* Add configuration setting for ignoring `argument-list-wrapping` above threshold of argument - [#2481](https://github.com/pinterest/ktlint/pull/2481), by @paul-dingemans  
+  NOTE: In code style `ktlint_official` this threshold is `unset` so that arguments are always wrapped. If this impacts your code too much, you can make it backward compatible by setting `.editorconfig` property `ktlint_argument_list_wrapping_ignore_when_parameter_count_greater_or_equal_than` to value `8`. For other code styles this property is initialized with value `8` and as of that backward compatible by default.
+
+* Ignore EOL comment that causes max_line_length to be exceeded, except in max-line-length rule - [#2516](https://github.com/pinterest/ktlint/pull/2516), by @paul-dingemans
+
+* Add new rule for disallowing KDoc at non-whitelisted locations - [#2548](https://github.com/pinterest/ktlint/pull/2548), by @paul-dingemans
+
+* Improve insert of suppression - [#2546](https://github.com/pinterest/ktlint/pull/2546), by @paul-dingemans
+
+* Ignore modifier of backing property in `android_studio` code style - [#2552](https://github.com/pinterest/ktlint/pull/2552), by @paul-dingemans
+
+* Add rule to check spacing around square brackets 'square-brackets-spacing' - [#2555](https://github.com/pinterest/ktlint/pull/2555), by @paul-dingemans
+
+* Add rule `blank-line-between-when-conditions` - [#2564](https://github.com/pinterest/ktlint/pull/2564), by @paul-dingemans
+
+### 🔧 Fixes
+
+* Prevent IllegalArgumentException in `argument-list-wrapping` rule - [#2500](https://github.com/pinterest/ktlint/pull/2500), by @paul-dingemans
+
+* Ignore function which is returned as result in a function body - [#2526](https://github.com/pinterest/ktlint/pull/2526), by @paul-dingemans
+
+* Fix false positive newline expected before comment in enum - [#2527](https://github.com/pinterest/ktlint/pull/2527), by @paul-dingemans
+
+* Report violation when parameter list is preceded by a comment - [#2541](https://github.com/pinterest/ktlint/pull/2541), by @paul-dingemans
+
+* Ignore EOL comments in `value-argument-comment` and `value-parameter-comment` - [#2551](https://github.com/pinterest/ktlint/pull/2551), by @paul-dingemans
+
+* Do not indent string template starting at first position of line - [#2553](https://github.com/pinterest/ktlint/pull/2553), by @paul-dingemans
+
+* Prevent conflict when curly closing brace is followed by range (until) operator - [#2554](https://github.com/pinterest/ktlint/pull/2554), by @paul-dingemans
+
+* Run argument-list-wrapping after function-signature - [#2568](https://github.com/pinterest/ktlint/pull/2568), by @paul-dingemans
+
+* Ignore simple reference expressions in `chain-method-continuation` - [#2569](https://github.com/pinterest/ktlint/pull/2569), by @paul-dingemans
+
+### 📦 Dependencies
+
+* chore(deps): update plugin org.gradle.toolchains.foojay-resolver-convention to v0.8.0 - [#2503](https://github.com/pinterest/ktlint/pull/2503), by @renovate[bot]
+
+* fix(deps): update dependency io.github.oshai:kotlin-logging-jvm to v6 - [#2440](https://github.com/pinterest/ktlint/pull/2440), by @renovate[bot]
+
+* Replace gradle/gradle-build-action@v3 with gradle/actions/setup-gradle@v3 - [#2518](https://github.com/pinterest/ktlint/pull/2518), by @paul-dingemans
+
+* chore(deps): update plugin kotlinx-binary-compatibiltiy-validator to v0.14.0 - [#2522](https://github.com/pinterest/ktlint/pull/2522), by @renovate[bot]
+
+* chore(deps): update gradle/wrapper-validation-action action to v2 - [#2523](https://github.com/pinterest/ktlint/pull/2523), by @renovate[bot]
+
+* chore(deps): update ffurrer2/extract-release-notes action to v2 - [#2515](https://github.com/pinterest/ktlint/pull/2515), by @renovate[bot]
+
+* chore(deps): update dependency gradle to v8.6 - [#2531](https://github.com/pinterest/ktlint/pull/2531), by @renovate[bot]
+
+* fix(deps): update dependency org.assertj:assertj-core to v3.25.3 - [#2536](https://github.com/pinterest/ktlint/pull/2536), by @renovate[bot]
+
+* fix(deps): update dependency org.junit.jupiter:junit-jupiter to v5.10.2 - [#2534](https://github.com/pinterest/ktlint/pull/2534), by @renovate[bot]
+
+* fix(deps): update dependency org.slf4j:slf4j-simple to v2.0.12 - [#2538](https://github.com/pinterest/ktlint/pull/2538), by @renovate[bot]
+
+* fix(deps): update dependency org.codehaus.janino:janino to v3.1.12 - [#2559](https://github.com/pinterest/ktlint/pull/2559), by @renovate[bot]
+
+### 💬 Other
+
+* Simplify BOM exclude list - [#2476](https://github.com/pinterest/ktlint/pull/2476), by @Goooler
+
+* 2550 clikt - [#2556](https://github.com/pinterest/ktlint/pull/2556), by @paul-dingemans
+
+## [1.1.1] - 2024-01-08
+
+### 🆕 Features
+
+None
+
+### 🔧 Fixes
+
+
+* Fix incorrect generateEditorConfig example in documentation - [#2444](https://github.com/pinterest/ktlint/pull/2444), by @stay7
+
+* Fix insert of suppression on binary expression - [#2463](https://github.com/pinterest/ktlint/pull/2463), by @paul-dingemans
+
+* Loosen dependency between chain-method-continuation and argument-list-wrapping - [#2468](https://github.com/pinterest/ktlint/pull/2468), by @paul-dingemans
+
+* Keep arrow when both parameter list and block of function literal are empty - [#2469](https://github.com/pinterest/ktlint/pull/2469), by @paul-dingemans
+
+* Improve wrapping of binary expressions - [#2479](https://github.com/pinterest/ktlint/pull/2479), by @paul-dingemans
+
+* Resolve conflict between parameter-list-spacing and parameter-list-wrapping - [#2491](https://github.com/pinterest/ktlint/pull/2491), by @paul-dingemans
+
+* Do not wrap binary expression value argument if it is already preceded by a newline - [#2493](https://github.com/pinterest/ktlint/pull/2493), by @paul-dingemans
+
+* Fix operator spacing - [#2473](https://github.com/pinterest/ktlint/pull/2473), by @paul-dingemans
+
+* Run `argument-list-wrapping`, `class-signature` and `function-signature` when comment rules are disabled - [#2466](https://github.com/pinterest/ktlint/pull/2466), by @paul-dingemans
+
+### 📦 Dependencies
+
+* fix(deps): update kotlin monorepo to v1.9.22 - [#2456](https://github.com/pinterest/ktlint/pull/2456), by @renovate[bot]
+
+* chore(deps): update actions/setup-python action to v5 - [#2417](https://github.com/pinterest/ktlint/pull/2417), by @renovate[bot]
+
+* fix(deps): update dependency org.slf4j:slf4j-simple to v2.0.10 - [#2470](https://github.com/pinterest/ktlint/pull/2470), by @renovate[bot]
+
+* fix(deps): update dependency dev.drewhamilton.poko:poko-gradle-plugin to v0.15.2 - [#2485](https://github.com/pinterest/ktlint/pull/2485), by @renovate[bot]
+
+* fix(deps): update dependency org.assertj:assertj-core to v3.25.1 - [#2486](https://github.com/pinterest/ktlint/pull/2486), by @renovate[bot]
+
+## [1.1.0] - 2023-12-19
+
+### 🆕 Features
+
+* Compile with java 21 instead of 20 - [#2320](https://github.com/pinterest/ktlint/pull/2320), by @paul-dingemans
+
+* Improve checking on backing property - [#2346](https://github.com/pinterest/ktlint/pull/2346), by @paul-dingemans
+
+* Add multiline-loop to complement multiline-if-else - [#2298](https://github.com/pinterest/ktlint/pull/2298), by @hendraanggrian
+
+* Add "UnusedImport" as @Suppress alias - [#2357](https://github.com/pinterest/ktlint/pull/2357), by @paul-dingemans
+
+* Allow backing property to be correlated to a public function - [#2356](https://github.com/pinterest/ktlint/pull/2356), by @paul-dingemans
+
+* Add helper function 'fromSnippetWithPath' to create a Code instance - [#2359](https://github.com/pinterest/ktlint/pull/2359), by @paul-dingemans
+
+* Support logging and exception throwing when loading baseline - [#2362](https://github.com/pinterest/ktlint/pull/2362), by @paul-dingemans
+
+* Allow factory methods to use generics, and to overload other factory … - [#2366](https://github.com/pinterest/ktlint/pull/2366), by @paul-dingemans
+
+* Remove dependencies on discouraged-comment-location rule - [#2371](https://github.com/pinterest/ktlint/pull/2371), by @paul-dingemans
+
+* Ignore imports for `rangeUntil` in `no-unused-imports` rule - [#2376](https://github.com/pinterest/ktlint/pull/2376), by @paul-dingemans
+
+* Ignore imports for `assign` in `no-unused-imports` rule - [#2382](https://github.com/pinterest/ktlint/pull/2382), by @paul-dingemans
+
+* Ignore invalid function names when importing from "junit.framework" - [#2386](https://github.com/pinterest/ktlint/pull/2386), by @paul-dingemans
+
+* Add experimental rules `condition-wrapping` and `mixed-condition-operators` - [#2401](https://github.com/pinterest/ktlint/pull/2401), by @paul-dingemans
+
+* Allow property, function and class name to be same as keyword wrapped with backticks - [#2405](https://github.com/pinterest/ktlint/pull/2405), by @paul-dingemans
+
+* Set offset of `max-line-length` violation to the last position at which a newline can be inserted to fix the violation - [#2419](https://github.com/pinterest/ktlint/pull/2419), by @paul-dingemans
+
+* Add support for API Consumers to add suppressions - [#2428](https://github.com/pinterest/ktlint/pull/2428), by @paul-dingemans
+
+* Disallow `else-if (..) <statement>` as single line construct - [#2430](https://github.com/pinterest/ktlint/pull/2430), by @paul-dingemans
+
+* Allow empty constructor for expected class declaration - [#2431](https://github.com/pinterest/ktlint/pull/2431), by @paul-dingemans
+
+* Disallow comments in try-catch-finally at unexpected locations - [#2432](https://github.com/pinterest/ktlint/pull/2432), by @paul-dingemans
+
+* Make ktlint.bat more environment agnostic - [#2421](https://github.com/pinterest/ktlint/pull/2421), by @TWiStErRob
+
+* Suppress property-naming rule via `@Suppress("ConstPropertyName")` - [#2442](https://github.com/pinterest/ktlint/pull/2442), by @paul-dingemans
+
+### 🔧 Fixes
+
+
+* Remove obsolete configuration files - [#2321](https://github.com/pinterest/ktlint/pull/2321), by @paul-dingemans
+
+* De-indent the closing angle bracket of the type argument list and type parameter lists in ktlint_official code style - [#2302](https://github.com/pinterest/ktlint/pull/2302), by @paul-dingemans
+
+* docs: Fix artifact url of Maven Central Badge - [#2327](https://github.com/pinterest/ktlint/pull/2327), by @guicamest
+
+* Remove redundant arrow in function literal without parameters / fix documentation - [#2365](https://github.com/pinterest/ktlint/pull/2365), by @paul-dingemans
+
+* Move curly brace before all consecutive comments preceding that curly brace - [#2375](https://github.com/pinterest/ktlint/pull/2375), by @paul-dingemans
+
+* Prevent stack overflow exception when code provided via stdin can not be parsed as Kotlin, nor Kotlin script - [#2380](https://github.com/pinterest/ktlint/pull/2380), by @paul-dingemans
+
+* Fix searching from inside a hidden directory - [#2377](https://github.com/pinterest/ktlint/pull/2377), by @kitterion
+
+* Prevent unwanted joining of KDoc with preceding type-parameter-list - [#2381](https://github.com/pinterest/ktlint/pull/2381), by @paul-dingemans
+
+* Fix false positive violation in `annotation` rule - [#2400](https://github.com/pinterest/ktlint/pull/2400), by @paul-dingemans
+
+* Replace all function bodies with body expressions in a single run - [#2395](https://github.com/pinterest/ktlint/pull/2395), by @paul-dingemans
+
+* Fix offset for violation when final newline is missing - [#2407](https://github.com/pinterest/ktlint/pull/2407), by @paul-dingemans
+
+* Fix path to ktlint JAR file in `ktlint.bat` - [#2408](https://github.com/pinterest/ktlint/pull/2408), by @paul-dingemans
+
+* Simplify `max-line-length` implementation - [#2410](https://github.com/pinterest/ktlint/pull/2410), by @paul-dingemans
+
+* Remove deprecated cli parameters `--experimental`, `--code-style`, `--disabled-rules` - [#2411](https://github.com/pinterest/ktlint/pull/2411), by @paul-dingemans
+
+* Fix adding blank line between declaration and an annotated declaration which is preceded by comment - [#2429](https://github.com/pinterest/ktlint/pull/2429), by @paul-dingemans
+
+* Update CODE_OF_CONDUCT with correct path - [#2437](https://github.com/pinterest/ktlint/pull/2437), by @OriginalMHV
+
+### 📦 Dependencies
+
+
+* fix(deps): update dependency org.jetbrains.dokka:dokka-gradle-plugin to v1.9.10 - [#2323](https://github.com/pinterest/ktlint/pull/2323), by @renovate[bot]
+
+* fix(deps): update dependency org.junit.jupiter:junit-jupiter to v5.10.1 - [#2342](https://github.com/pinterest/ktlint/pull/2342), by @renovate[bot]
+
+* fix(deps): update kotlin monorepo to v1.9.21 - [#2374](https://github.com/pinterest/ktlint/pull/2374), by @renovate[bot]
+
+* fix(deps): update dependency org.codehaus.janino:janino to v3.1.11 - [#2387](https://github.com/pinterest/ktlint/pull/2387), by @renovate[bot]
+
+* fix(deps): update dependency dev.drewhamilton.poko:poko-gradle-plugin to v0.15.1 - [#2389](https://github.com/pinterest/ktlint/pull/2389), by @renovate[bot]
+
+* chore(deps): update dependency gradle to v8.5 - [#2392](https://github.com/pinterest/ktlint/pull/2392), by @renovate[bot]
+
+* chore(deps): update actions/checkout digest to b4ffde6 - [#2329](https://github.com/pinterest/ktlint/pull/2329), by @renovate[bot]
+
+* chore(deps): update actions/setup-java action to v4 - [#2393](https://github.com/pinterest/ktlint/pull/2393), by @renovate[bot]
+
+* fix(deps): update dependency ch.qos.logback:logback-classic to v1.3.14 - [#2406](https://github.com/pinterest/ktlint/pull/2406), by @renovate[bot]
+
+* fix(deps): update dependency io.github.hakky54:logcaptor to v2.9.2 - [#2409](https://github.com/pinterest/ktlint/pull/2409), by @renovate[bot]
+
+* fix(deps): update dependency io.github.oshai:kotlin-logging-jvm to v5.1.4 - [#2439](https://github.com/pinterest/ktlint/pull/2439), by @renovate[bot]
+
+## [1.0.1] - 2023-10-13
+
+### 🆕 Features
+
+* Add `.editorconfig` property `ktlint_function_naming_ignore_when_annotated_with` so that rule `function-naming` can be ignored based on annotations on that rule. See [function-naming](https://pinterest.github.io/ktlint/1.0.1/rules/standard/#function-naming).
+
+### 🔧 Fixes
+
+* Update badge for Maven Central - [#2245](https://github.com/pinterest/ktlint/pull/2245), by @Goooler
+
+* Fix code style parameter in cli - [#2241](https://github.com/pinterest/ktlint/pull/2241), by @paul-dingemans
+
+* Anonymous function in assignment - [#2263](https://github.com/pinterest/ktlint/pull/2263), by @paul-dingemans
+
+* Fix indent of multiline object declaration inside class - [#2266](https://github.com/pinterest/ktlint/pull/2266), by @paul-dingemans
+
+* Do not replace function body with multiple exit points - [#2273](https://github.com/pinterest/ktlint/pull/2273), by @paul-dingemans
+
+* Ignore override of function in rule `function-naming` - [#2274](https://github.com/pinterest/ktlint/pull/2274), by @paul-dingemans
+
+* Suppress `function-naming` based on annotations - [#2275](https://github.com/pinterest/ktlint/pull/2275), by @paul-dingemans
+
+* Force blank line before object declaration - [#2287](https://github.com/pinterest/ktlint/pull/2287), by @paul-dingemans
+
+* Multiline expression wrapping - [#2290](https://github.com/pinterest/ktlint/pull/2290), by @paul-dingemans
+
+* Ignore function naming in Kotest classes - [#2291](https://github.com/pinterest/ktlint/pull/2291), by @paul-dingemans
+
+* Improve violation message in `discouraged-comment-location` - [#2293](https://github.com/pinterest/ktlint/pull/2293), by @paul-dingemans
+
+* Fix malformed AST when `&&` or `||` is at start of line `chain-wrapping` - [#2300](https://github.com/pinterest/ktlint/pull/2300), by @paul-dingemans
+
+* Do not report false positives `type-argument-list-spacing` and `type-parameter-list-spacing` - [#2303](https://github.com/pinterest/ktlint/pull/2303), by @paul-dingemans
+
+* Fix chain method continuation containing higher order function call - [#2305](https://github.com/pinterest/ktlint/pull/2305), by @paul-dingemans
+
+### 📦 Dependencies
+
+* Update dependency io.github.detekt.sarif4k:sarif4k to v0.5.0 - [#2277](https://github.com/pinterest/ktlint/pull/2277), by @renovate[bot]
+
+* Update dependency gradle to v8.4 - [#2294](https://github.com/pinterest/ktlint/pull/2294), by @renovate[bot]
+
+* Update actions/checkout action to v4 - [#2225](https://github.com/pinterest/ktlint/pull/2225), by @renovate[bot]
+
+* Update actions/checkout digest to 8ade135 - [#2295](https://github.com/pinterest/ktlint/pull/2295), by @renovate[bot]
+
+### 💬 Other
+
+* Simple property assignments in KTS - [#2123](https://github.com/pinterest/ktlint/pull/2123), by @Goooler
+
+## [1.0.0] - 2023-09-05
+
+### 💔 Breaking changes
+
+* Update and align Maven coordinates - [#2195](https://github.com/pinterest/ktlint/pull/2195), by @paul-dingemans  
+  Be sure to update Maven coordinates below, to get latest changes!  
+  
+  | Old Maven coordinates                              | New Maven coordinates                                  |
+  |----------------------------------------------------|--------------------------------------------------------|
+  | com.pinterest.ktlint                               | com.pinterest.ktlint:ktlint-cli                        |
+  | com.pinterest.ktlint:ktlint-reporter-baseline      | com.pinterest.ktlint:ktlint-cli-reporter-baseline      |
+  | com.pinterest.ktlint:ktlint-reporter-checkstyle    | com.pinterest.ktlint:ktlint-cli-reporter-checkstyle    |
+  | com.pinterest.ktlint:ktlint-cli-reporter           | com.pinterest.ktlint:ktlint-cli-reporter-core          |
+  | com.pinterest.ktlint:ktlint-reporter-format        | com.pinterest.ktlint:ktlint-cli-reporter-format        |
+  | com.pinterest.ktlint:ktlint-reporter-html          | com.pinterest.ktlint:ktlint-cli-reporter-html          |
+  | com.pinterest.ktlint:ktlint-reporter-json          | com.pinterest.ktlint:ktlint-cli-reporter-json          |
+  | com.pinterest.ktlint:ktlint-reporter-plain         | com.pinterest.ktlint:ktlint-cli-reporter-plain         |
+  | com.pinterest.ktlint:ktlint-reporter-plain-summary | com.pinterest.ktlint:ktlint-cli-reporter-plain-summary |
+  | com.pinterest.ktlint:ktlint-reporter-sarif         | com.pinterest.ktlint:ktlint-cli-reporter-sarif         |
+
+
+* Add binary compatibility validator - [#2131](https://github.com/pinterest/ktlint/pull/2131), by @mateuszkwiecinski
+
+* Replace kotlin public `data class`es with Poko compiler plugin generated ones - [#2136](https://github.com/pinterest/ktlint/pull/2136), by @mateuszkwiecinski  
+  As a part of public API stabilization, data classes are no longer used in the public API. As of that, functions like `copy()` or `componentN()` (used for destructuring declarations) are not available anymore.
+
+* Promote experimental rules - [#2218](https://github.com/pinterest/ktlint/pull/2218), by @paul-dingemans  
+  The rules below have been promoted to non-experimental rules:
+  * [blank-line-before-declaration](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#blank-line-before-declarations)
+  * [context-receiver-wrapping](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#content-receiver-wrapping)
+  * [discouraged-comment-location](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#discouraged-comment-location)
+  * [enum-wrapping](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#enum-wrapping)
+  * [function-naming](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#function-naming)
+  * [function-signature](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#function-signature)
+  * [if-else-bracing](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#if-else-bracing)
+  * [multiline-expression-wrapping](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#multiline-expression-wrapping)
+  * [if-else-wrapping](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#if-else-wrapping)
+  * [no-blank-line-in-list](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#no-blank-line-in-list)
+  * [no-consecutive-comments](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#no-consecutive-comments)
+  * [no-empty-file](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#no-empty-file)
+  * [no-empty-first-line-in-class-body](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#no-empty-first-line-in-class-body)
+  * [no-single-line-block-comment](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#no-single-line-block-comment)
+  * [parameter-list-spacing](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#parameter-list-spacing)
+  * [property-naming](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#property-naming)
+  * [statement-wrapping](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#statement-wrapping)
+  * [string-template-indent](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#string-template-indent)
+  * [try-catch-finally-spacing](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#try-catch-finally-spacing)
+  * [type-argument-list-spacing](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#type-argument-list-spacing)
+  * [type-parameter-list-spacing](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#type-parameter-list-spacing)
+  * [unnecessary-parentheses-before-trailing-lambda](https://pinterest.github.io/ktlint/1.0.0/rules/standard/#unnecessary-parentheses-before-trailing-lambda)
+
+* Fix statement-wrapping and align rule classes - [#2178](https://github.com/pinterest/ktlint/pull/2178), by @paul-dingemans  
+  Rule class `MultilineExpressionWrapping` has been renamed to `MultilineExpressionWrappingRule`. Rule class `StatementWrapping` has been renamed to `StatementWrappingRule`. `RULE_ID` constants below are moved to a different Java class at compile time. Each rule provided by Ktlint is to be accompanied by a `RULE_ID` constant that can be used in the `VisitorModifier.RunAfter`. Filenames did not comply with standard that it should end with `Rule` suffix.  
+  
+  | RULE ID                                 | Old Java class name           | New Java class name               |
+  |-----------------------------------------|-------------------------------|-----------------------------------|
+  | `FUNCTION_EXPRESSION_BODY_RULE_ID`      | FunctionExpressionBodyKt      | FunctionExpressionBodyRuleKt      |
+  | `FUNCTION_LITERAL_RULE_ID`              | FunctionLiteralKt             | FunctionLiteralRuleKt             |
+  | `MULTILINE_EXPRESSION_WRAPPING_RULE_ID` | MultilineExpressionWrappingKt | MultilineExpressionWrappingRuleKt |
+  | `NO_BLANK_LINE_IN_LIST_RULE_ID`         | NoBlankLineInListKt           | NoBlankLineInListRuleKt           |
+  | `NO_EMPTY_FILE_RULE_ID`                 | (not applicable)              | NoEmptyFileRuleKt                 |
+  
+* Update to Kotlin 1.9 & remove TreeCopyHandler extension - [#2113](https://github.com/pinterest/ktlint/pull/2113), by @paul-dingemans  
+  Class `org.jetbrains.kotlin.com.intellij.treeCopyHandler` is no longer registered as extension point for the compiler as this is not supported in Kotlin 1.9. Please test your custom rules. In case of unexpected exceptions during formatting of code, see [#2044](https://github.com/pinterest/ktlint/pull/2044) for possible remediation.
+
+### 🆕 Features
+
+
+* Change default code style to `ktlint_official` - [#2144](https://github.com/pinterest/ktlint/pull/2144), by @paul-dingemans
+
+* Add new experimental rule `class-signature` - [#2119](https://github.com/pinterest/ktlint/pull/2119), by @paul-dingemans
+
+* Add new experimental rule `function-expression-body` - [#2151](https://github.com/pinterest/ktlint/pull/2151), by @paul-dingemans
+
+* Add new experimental rule `chain-method-continuation` - [#2088](https://github.com/pinterest/ktlint/pull/2088), by @atulgpt
+
+* Add new experimental rule `function-literal` - [#2137](https://github.com/pinterest/ktlint/pull/2137), by @paul-dingemans
+
+* Add new experimental rule `function-type-modifier-spacing` rule - [#2216](https://github.com/pinterest/ktlint/pull/2216), by @t-kameyama
+
+* Define `EditorConfigOverride` for dynamically loaded ruleset - [#2194](https://github.com/pinterest/ktlint/pull/2194), by @paul-dingemans
+  The `EditorConfigOverride` parameter of the `KtlintRuleEngine` can be defined using the factory method `EditorConfigOverride.from(vararg properties: Pair<EditorConfigProperty<*>, *>)`. This requires the `EditorConfigProperty`'s to be available at compile time. Some common `EditorConfigProperty`'s are defined in `ktlint-rule-engine-core` which is loaded as transitive dependency of `ktlint-rule-engine` and as of that are available at compile.
+  If an `EditorConfigProperty` is defined in a `Rule` that is only provided via a runtime dependency, it gets a bit more complicated. The `ktlint-api-consumer` example has now been updated to show how the `EditorConfigProperty` can be retrieved from the `Rule`.
+
+* Move wrapping on semicolon from `wrapping` rule to `statement-wrapping` rule - [#2222](https://github.com/pinterest/ktlint/pull/2222), by @paul-dingemans
+
+### 🔧 Fixes
+
+* Do not indent class body for classes having a long super type list - [#2116](https://github.com/pinterest/ktlint/pull/2116), by @paul-dingemans
+
+* Fix indent of explicit constructor - [#2118](https://github.com/pinterest/ktlint/pull/2118), by @paul-dingemans
+
+* Fix incorrect formatting of nested function literal - [#2107](https://github.com/pinterest/ktlint/pull/2107), by @paul-dingemans
+
+* Add property to disable ktlint for a glob in `.editorconfig` - [#2108](https://github.com/pinterest/ktlint/pull/2108), by @paul-dingemans
+
+* Fix spacing around colon in annotations - [#2126](https://github.com/pinterest/ktlint/pull/2126), by @paul-dingemans
+
+* Fix solving problems in 3 consecutive runs - [#2132](https://github.com/pinterest/ktlint/pull/2132), by @paul-dingemans
+
+* Fix indent parenthesized expression - [#2127](https://github.com/pinterest/ktlint/pull/2127), by @paul-dingemans
+
+* Fix indent of IS_EXPRESSION, PREFIX_EXPRESSION and POSTFIX_EXPRESSION - [#2125](https://github.com/pinterest/ktlint/pull/2125), by @paul-dingemans
+
+* Do not wrap a binary expression after an elvis operator - [#2134](https://github.com/pinterest/ktlint/pull/2134), by @paul-dingemans
+
+* Drop obsolete class LintError in ktlint-api-consumer - [#2145](https://github.com/pinterest/ktlint/pull/2145), by @paul-dingemans
+
+* Fix null pointer exception for if-else statement with empty THEN block - [#2142](https://github.com/pinterest/ktlint/pull/2142), by @paul-dingemans
+
+* Fix false positive in property-naming - [#2141](https://github.com/pinterest/ktlint/pull/2141), by @paul-dingemans
+
+* Store relative path of file in baseline file - [#2147](https://github.com/pinterest/ktlint/pull/2147), by @paul-dingemans
+
+* Fix url of build status badge - [#2162](https://github.com/pinterest/ktlint/pull/2162), by @paul-dingemans
+
+* Update CONTRIBUTING.md - [#2163](https://github.com/pinterest/ktlint/pull/2163), by @oshai
+
+* Fix statement-wrapping and align rule classes - [#2178](https://github.com/pinterest/ktlint/pull/2178), by @paul-dingemans
+
+* Fix alignment of type constraints after `where` keyword in function - [#2180](https://github.com/pinterest/ktlint/pull/2180), by @paul-dingemans
+
+* Fix wrapping of multiline postfix expression - [#2184](https://github.com/pinterest/ktlint/pull/2184), by @paul-dingemans
+
+* Do not wrap expression after a spread operator - [#2193](https://github.com/pinterest/ktlint/pull/2193), by @paul-dingemans
+
+* Do not remove parenthesis after explicit class constructor without arguments - [#2226](https://github.com/pinterest/ktlint/pull/2226), by @paul-dingemans
+
+* Fix conflict between rules due to annotated super type call - [#2227](https://github.com/pinterest/ktlint/pull/2227), by @paul-dingemans
+
+* Fix indentation of super type list of class in case it is preceded by  a comment - [#2228](https://github.com/pinterest/ktlint/pull/2228), by @paul-dingemans
+
+* Super type list starting with an annotation having a parameters - [#2230](https://github.com/pinterest/ktlint/pull/2230), by @paul-dingemans
+
+* Do not wrap values in a single line enum when it is preceded by a comment or an annotation - [#2229](https://github.com/pinterest/ktlint/pull/2229), by @paul-dingemans
+
+### 📦 Dependencies
+
+
+* Update dependency org.codehaus.janino:janino to v3.1.10 - [#2110](https://github.com/pinterest/ktlint/pull/2110), by @renovate[bot]
+
+* Update dependency com.google.jimfs:jimfs to v1.3.0 - [#2112](https://github.com/pinterest/ktlint/pull/2112), by @renovate[bot]
+
+* Update dependency org.junit.jupiter:junit-jupiter to v5.10.0 - [#2148](https://github.com/pinterest/ktlint/pull/2148), by @renovate[bot]
+
+* Update dependency io.github.oshai:kotlin-logging-jvm to v5.1.0 - [#2174](https://github.com/pinterest/ktlint/pull/2174), by @renovate[bot]
+
+* Update dependency dev.drewhamilton.poko:poko-gradle-plugin to v0.15.0 - [#2173](https://github.com/pinterest/ktlint/pull/2173), by @renovate[bot]
+
+* Update plugin org.gradle.toolchains.foojay-resolver-convention to v0.7.0 - [#2187](https://github.com/pinterest/ktlint/pull/2187), by @renovate[bot]
+
+* Update dependency gradle to v8.3 - [#2186](https://github.com/pinterest/ktlint/pull/2186), by @renovate[bot]
+
+* Update kotlin monorepo to v1.9.10 - [#2197](https://github.com/pinterest/ktlint/pull/2197), by @renovate[bot]
+
+* Update dependency info.picocli:picocli to v4.7.5 - [#2215](https://github.com/pinterest/ktlint/pull/2215), by @renovate[bot]
+
+* Update dependency org.jetbrains.dokka:dokka-gradle-plugin to v1.9.0 - [#2221](https://github.com/pinterest/ktlint/pull/2221), by @renovate[bot]
+
+* Update dependency org.slf4j:slf4j-simple to v2.0.9 - [#2224](https://github.com/pinterest/ktlint/pull/2224), by @renovate[bot]
+
+### 💬 Other
+
+
+* Setup toolchains, compile project with Java 20 only, run test on various Java versions - [#2120](https://github.com/pinterest/ktlint/pull/2120), by @mateuszkwiecinski
+
+* Add release-changelog-builder-action to temporary workflow - [#2196](https://github.com/pinterest/ktlint/pull/2196), by @paul-dingemans
+
+## [0.50.0] - 2023-06-29
+
+### Deprecation of ktlint-enable and ktlint-disable directives
+
+The `ktlint-disable` and `ktlint-enable` directives are no longer supported. Ktlint rules can now only be suppressed using the `@Suppress` or `@SuppressWarnings` annotations. A new rule, `internal:ktlint-suppression`, is provided to replace the directives with annotations.
+
+API consumers do not need to provide this rule, but it does no harm when done.
+
+The `internal:ktlint-suppression` rule can not be disabled via the `.editorconfig` nor via `@Suppress` or `@SuppressWarnings` annotations.
+
+### Custom Rule Providers need to prepare for Kotlin 1.9
+
+In Kotlin 1.9 the extension points of the embedded kotlin compiler will change. Ktlint only uses the `org.jetbrains.kotlin.com.intellij.treeCopyHandler` extension point. This extension is not yet supported in 1.9, neither is it documented ([#KT-58704](https://youtrack.jetbrains.com/issue/KT-58704/Support-and-document-extension-point-org.jetbrains.kotlin.com.intellij.treeCopyHandler)). Without this extension point it might happen that your custom rules will throw exceptions during runtime. See [#1981](https://github.com/pinterest/ktlint/issues/1981).
+
+In Ktlint, 7 out of 77 rules needed small and sometimes bigger changes to become independent of the extension point `org.jetbrains.kotlin.com.intellij.treeCopyHandler`. The impact on your custom rules may vary dependent on the way the autocorrect has been implemented. When manipulating `ASTNode`s there seems to be no impact. When, manipulating `PsiElement`s, some functions consistently result in a runtime exception.
+
+Based on the refactoring of the rules as provided by `ktlint-ruleset-standard` in Ktlint `0.49.x` the suggested refactoring is as follows:
+
+* Replace `LeafElement.replaceWithText(String)` with `LeafElement.rawReplaceWithText(String)`.
+* Replace `PsiElement.addAfter(PsiElement, PsiElement)` with `AstNode.addChild(AstNode, AstNode)`. Note that this method inserts the new node (first) argument *before* the second argument node and as of that is not a simple replacement of the `PsiElement.addAfter(PsiElement, PsiElement)`.
+* Replace `PsiElement.replace(PsiElement)` with a sequence of `AstNode.addChild(AstNode, AstNode)` and `AstNode.removeChild(AstNode)`.
+
+Be aware that your custom rules might use other functions which also throw exceptions when the extension point `org.jetbrains.kotlin.com.intellij.treeCopyHandler` is no longer supported.
+
+In order to help you to analyse and fix the problems with your custom rules, ktlint temporarily supports to disable the extension point `org.jetbrains.kotlin.com.intellij.treeCopyHandler` using a flag. This flag is available in the Ktlint CLI and in the `KtlintRuleEngine`. By default, the extension point is enabled like it was in previous versions of ktlint.
+
+At least you should analyse the problems by running your test suits by running ktlint and disabling the extension point. Next you can start with fixing and releasing the updated rules. All rules in this version of ktlint have already been refactored and are not dependent on the extension point anymore. In Ktlint CLI the flag is to be activated with parameter `--disable-kotlin-extension-point`. API Consumers that use the `KtlintRuleEngine` directly, have to set property `enableKotlinCompilerExtensionPoint` to `false`.
+
+At this point in time, it is not yet decided what the next steps will be. Ktlint might drop the support of the extension points entirely. Or, if the extension point `org.jetbrains.kotlin.com.intellij.treeCopyHandler` is fully supported at the time that ktlint will be based on kotlin 1.9 it might be kept. In either case, the flag will be dropped in a next version of ktlint.
+
+### Added
+
+* Add new experimental rule `binary-expression-wrapping`. This rule wraps a binary expression in case the max line length is exceeded ([#1940](https://github.com/pinterest/ktlint/issues/1940))
+* Add flag to disable extension point `org.jetbrains.kotlin.com.intellij.treeCopyHandler` to analyse impact on custom rules [#1981](https://github.com/pinterest/ktlint/issues/1981)
+* Add new experimental rule `no-empty-file` for all code styles. A kotlin (script) file may not be empty ([#1074](https://github.com/pinterest/ktlint/issues/1074))
+* Add new experimental rule `statement-wrapping` which ensures function, class, or other blocks statement body doesn't start or end at starting or ending braces of the block ([#1938](https://github.com/pinterest/ktlint/issues/1938)). Note, although this rule is added in this release, it is never executed except in unit tests.
+* Add new experimental rule `blank-line-before-declaration`. This rule requires a blank line before class, function or property declarations ([#1939](https://github.com/pinterest/ktlint/issues/1939))
+* Wrap multiple statements on same line `wrapping` ([#1078](https://github.com/pinterest/ktlint/issues/1078))
+* Add new rule `ktlint-suppression` to replace the `ktlint-disable` and `ktlint-enable` directives with annotations. This rule can not be disabled via the `.editorconfig` ([#1947](https://github.com/pinterest/ktlint/issues/1947))
+* Inform user about using `--format` option of KtLint CLI when finding a violation that can be autocorrected ([#1071](https://github.com/pinterest/ktlint/issues/1071))
+
+### Removed
+
+* Code which was deprecated in `0.49.x` is removed. Consult changelog of 0.49.x` released for more information. Summary of removed code: 
+
+### Fixed
+
+* Do not flag a (potential) mutable extension property in case the getter is annotated or prefixed with a modifier `property-naming` ([#2024](https://github.com/pinterest/ktlint/issues/2024))
+* Do not merge an annotated expression body with the function signature even if it fits on a single line ([#2043](https://github.com/pinterest/ktlint/issues/2043))
+* Ignore property with name `serialVersionUID` in `property-naming` ([#2045](https://github.com/pinterest/ktlint/issues/2045))
+* Prevent incorrect reporting of violations in case a nullable function type reference exceeds the maximum line length `parameter-list-wrapping` ([#1324](https://github.com/pinterest/ktlint/issues/1324)) 
+* Prevent false negative on `else` branch when body contains only chained calls or binary expression ([#2057](https://github.com/pinterest/ktlint/issues/2057))
+* Fix indent when property value is wrapped to next line ([#2095](https://github.com/pinterest/ktlint/issues/2095)) 
+
+### Changed
+
+* Fix Java interoperability issues with `RuleId` and `RuleSetId` classes. Those classes were defined as value classes in `0.49.0` and `0.49.1`. Although the classes were marked with `@JvmInline` it seems that it is not possible to uses those classes from Java base API Consumers like Spotless. The classes have now been replaced with data classes ([#2041](https://github.com/pinterest/ktlint/issues/2041))
+* Update dependency `info.picocli:picocli` to `v4.7.4`
+* Update dependency `org.junit.jupiter:junit-jupiter` to `v5.9.3`
+* Update Kotlin development version to `1.8.22` and Kotlin version to `1.8.22`.
+* Update dependency `io.github.detekt.sarif4k:sarif4k` to `v0.4.0`
+* Update dependency `org.jetbrains.dokka:dokka-gradle-plugin` to `v1.8.20`
+* Run format up to 3 times in case formatting introduces changes which also can be autocorrected ([#2084](https://github.com/pinterest/ktlint/issues/2084))
+
+## [0.49.1] - 2023-05-12
+
+### Added
+
+### Removed
+
+### Fixed
+* Store path of file containing a lint violation relative to the location of the baseline file itself ([#1962](https://github.com/pinterest/ktlint/issues/1962))
+* Print absolute path of file in lint violations when flag "--relative" is not specified in Ktlint CLI ([#1963](https://github.com/pinterest/ktlint/issues/1963)) 
+* Handle parameter `--code-style=android_studio` in Ktlint CLI identical to deprecated parameter `--android` ([#1982](https://github.com/pinterest/ktlint/issues/1982))
+* Prevent nullpointer exception (NPE) if class without body is followed by multiple blank lines until end of file `no-consecutive-blank-lines` ([#1987](https://github.com/pinterest/ktlint/issues/1987))
+* Allow to 'unset' the `.editorconfig` property `ktlint_function_signature_rule_force_multiline_when_parameter_count_greater_or_equal_than` when using `ktlint_official` code style `function-signature` ([#1977](https://github.com/pinterest/ktlint/issues/1977))
+* Prevent nullpointer exception (NPE) if or operator at start of line is followed by dot qualified expression `indent` ([#1993](https://github.com/pinterest/ktlint/issues/1993))
+* Fix indentation of multiline parameter list in function literal `indent` ([#1976](https://github.com/pinterest/ktlint/issues/1976))
+* Restrict indentation of closing quotes to `ktlint_official` code style to keep formatting of other code styles consistent with `0.48.x` and before `indent` ([#1971](https://github.com/pinterest/ktlint/issues/1971))
+* Extract rule `no-single-line-block-comment` from `comment-wrapping` rule. The `no-single-line-block-comment` rule is added as experimental rule to the `ktlint_official` code style, but it can be enabled explicitly for the other code styles as well. ([#1980](https://github.com/pinterest/ktlint/issues/1980))
+* Clean-up unwanted logging dependencies ([#1998](https://github.com/pinterest/ktlint/issues/1998))
+* Fix directory traversal for patterns referring to paths outside of current working directory or any of it child directories ([#2002](https://github.com/pinterest/ktlint/issues/2002))
+* Prevent multiple expressions on same line separated by semicolon ([#1078](https://github.com/pinterest/ktlint/issues/1078))
+
+### Changed
+
+* Moved class `Baseline` from `ktlint-cli` to `ktlint-cli-reporter-baseline` so that Baseline functionality is reusable for API Consumers.
+
+## [0.49.0] - 2023-04-21
+
+WARNING: This version of KtLint contains a number of breaking changes in KtLint CLI and KtLint API. If you are using KtLint with custom ruleset jars or custom reporter jars, then those need to be upgraded before you can use them with this version of ktlint. Please contact the maintainers of those jars and ask them to upgrade a.s.a.p.
+
+All rule id's in the output of Ktlint are now prefixed with a rule set. Although KtLint currently supports standard rules to be unqualified, users are encouraged to include the rule set id in all references to rules. This includes following:
+* The `--disabled-rules` parameter in KtLint CLI.
+* The `.editorconfig` properties used to enable or disable rule and rule sets. Note that properties `disabled_rules` and `ktlint_disabled_rules` have been removed in this release. See [disabled rules](https://pinterest.github.io/ktlint/rules/configuration-ktlint/#disabled-rules) for more information.
+* The `source` element in the KtLint CLI `baseline.xml` file. Regenerating this file, fixes all rule references automatically.
+* The KtLint disable directives `ktlint-enable` / `ktlint-disable` and the `@Suppress('ktlint:...')` annotations.
+* The `VisitorModifier.RunAfterRule`.
+
+### Moving experimental rules to standard rule set
+
+The `experimental` rule set has been merged with `standard` rule set. The rules which formerly were part of the `experimental` rule set are still being treated as before. The rules will only be run in case `.editorconfig` property `ktlint_experimental` is enabled or in case the rule is explicitly enabled.
+
+Note that the prefix `experimental:` has to be removed from all references to this rule. Check references in:
+* The `--disabled-rules` parameter in KtLint CLI.
+* The `.editorconfig` properties used to enable or disable rule and rule sets. Note that properties `disabled_rules` and `ktlint_disabled_rules` have been removed in this release. See [disabled rules](https://pinterest.github.io/ktlint/rules/configuration-ktlint/#disabled-rules) for more information.
+* The KtLint disable directives `ktlint-enable` / `ktlint-disable` and the `@Suppress('ktlint:...')` annotations.
+* The `VisitorModifier.RunAfterRule`.
+
+### Promote experimental rules to non-experimental
+
+The rules below have been promoted to non-experimental rules:
+* [block-comment-initial-star-alignment](https://pinterest.github.io/ktlint/rules/standard/#block-comment-initial-star-alignment)
+* [class-naming](https://pinterest.github.io/ktlint/rules/standard/#classobject-naming)
+* [comment-wrapping](https://pinterest.github.io/ktlint/rules/standard/#comment-wrapping)
+* [function-return-type-spacing](https://pinterest.github.io/ktlint/rules/standard/#function-return-type-spacing)
+* [function-start-of-body-spacing](https://pinterest.github.io/ktlint/rules/standard/#function-start-of-body-spacing)
+* [function-type-reference-spacing](https://pinterest.github.io/ktlint/rules/standard/#function-type-reference-spacing)
+* [fun-keyword-spacing](https://pinterest.github.io/ktlint/rules/standard/#fun-keyword-spacing)
+* [kdoc-wrapping](https://pinterest.github.io/ktlint/rules/standard/#kdoc-wrapping)
+* [modifier-list-spacing](https://pinterest.github.io/ktlint/rules/standard/#modifier-list-spacing)
+* [nullable-type-spacing](https://pinterest.github.io/ktlint/rules/standard/#nullable-type-spacing)
+* [spacing-between-function-name-and-opening-parenthesis](https://pinterest.github.io/ktlint/rules/standard/#spacing-between-function-name-and-opening-parenthesis)
+* [unnecessary-parentheses-before-trailing-lambda](https://pinterest.github.io/ktlint/rules/standard/#unnecessary-parenthesis-before-trailing-lambda)
+
+Note that this only affects users that have enabled the standard ruleset while having the experimental rules disabled.
+
+### API Changes & RuleSet providers & Reporter Providers
+
+This release is intended to be the last release before the 1.0.x release of ktlint. If all goes as planned, the 1.0.x release does not contain any new breaking changes with except of removal of functionality which is deprecated in this release.
+
+This release contains a lot of breaking changes which aims to improve the future maintainability of Ktlint. If you get stuck while migrating, please reach out to us by creating an issue.
+
+#### Experimental rules
+
+Rules in custom rule sets can now be marked as experimental by implementing the `Rule.Experimental` interface on the rule. Rules marked with this interface will only be executed by Ktlint if `.editorconfig` property `ktlint_experimental` is enabled or if the rule itself has been enabled explicitly.
+
+When using this feature, experimental rules should *not* be defined in a separate rule set as that would require a distinct rule set id. When moving a rule from an experimental rule set to a non-experimental rule set this would mean that the qualified rule id changes. For users of such rules this means that ktlint directives to suppress the rule and properties in the `.editorconfig` files have to be changed.
+
+#### EditorConfig
+
+Field `defaultAndroidValue` in class `EditorConfigProperty` has been renamed to `androidStudioCodeStyleDefaultValue`. New fields `ktlintOfficialCodeStyleDefaultValue` and `intellijIdeaCodeStyleDefaultValue` have been added. Read more about this in the section "Ktlint Official code style".
+
+The `.editorconfig` properties `disabled_rules` and `ktlint_disabled_rules` are no longer supported. Specifying those properties in the `editorConfigOverride` or `editorConfigDefaults` result in warnings at runtime.
+
+#### 'Ktlint Official` code style and renaming of existing code styles
+
+A new code style `ktlint_official` is introduced. This code style is work in progress but will become the default code style in the `1.0` release. Please try out the new code style and provide your feedback via the [issue tracker](https://github.com/pinterest/ktlint/issues).
+
+This `ktlint_official` code style combines the best elements from the [Kotlin Coding conventions](https://kotlinlang.org/docs/coding-conventions.html) and [Android's Kotlin styleguide](https://developer.android.com/kotlin/style-guide). This code style also provides additional formatting on topics which are not (explicitly) mentioned in those conventions and style guide. But do note that this code style sometimes formats code in a way which is not accepted by the default code formatters in IntelliJ IDEA and Android Studio. The formatters of those editors produce nicely formatted code in the vast majority of cases. But in a number of edge cases, the formatting contains bugs which are waiting to be fixed for several years. The new code style formats code in a way which is compatible with the default formatting of the editors whenever possible. When using this codestyle, it is best to disable (e.g. not use) code formatting in the editor.
+
+The existing code styles have been renamed to make more clear what the basis of the code style is.
+
+The `official` code style has been renamed to `intellij_idea`. Code formatted with this code style aims to be compatible with default formatter of IntelliJ IDEA. This code style is based on [Kotlin Coding conventions](https://kotlinlang.org/docs/coding-conventions.html). If `.editorconfig` property `ktlint_code_style` has been set to `android` then do not forget to change the value of that property to `intellij_idea`. When not set, this is still the default code style of ktlint `0.49`. Note that the default code style will be changed to `ktlint_official` in the `1.0` release.
+
+Code style `android` has been renamed to `android_studio`. Code formatted with this code style aims to be compatible with default formatter of Android Studio. This code style is based on [Android's Kotlin styleguide](https://developer.android.com/kotlin/style-guide). If `.editorconfig` property `ktlint_code_style` has been set to `android` then do not forget to change the value of that property to `android_studio`.
+
+#### Package restructuring and class relocation
+
+The internal structure of the Ktlint project has been revised. The Ktlint CLI and KtLint API modules have been decoupled where possible. Modules have been restructured and renamed. See [API Overview](https://pinterest.github.io/ktlint/api/overview/) for more information.
+
+This is the last release that contains module `ktlint-core` as it had too many responsibilities. All classes in this module are relocated to other modules. Some classes have also been renamed. See tables below for details. Classes that are left behind in the `ktlint-core` module are deprecated and were kept in this version for backwards compatibility only. The `ktlint-core` module will be removed in Ktlint `0.50.x`.
+
+Classes below have been moved from module `ktlint-core` to the new module `ktlint-rule-engine-core`:
+
+| Old class/package name in `ktlint-core`                  | New class/package name in `ktlint-rule-engine-core`                               |
+|----------------------------------------------------------|-----------------------------------------------------------------------------------|
+| com.pinterest.ktlint.core.api.editorconfig               | com.pinterest.ktlint.rule.engine.core.api.editorconfig                            |
+| com.pinterest.ktlint.core.api.EditorConfigProperties     | com.pinterest.ktlint.rule.engine.core.api.EditorConfig                            |
+| com.pinterest.ktlint.core.api.OptInFeatures              | com.pinterest.ktlint.rule.engine.core.api.OptInFeatures                           |
+| com.pinterest.ktlint.core.ast.ElementType                | com.pinterest.ktlint.rule.engine.core.api.ElementType                             |
+| com.pinterest.ktlint.core.ast.package                    | com.pinterest.ktlint.rule.engine.core.api.ASTNodeExtension                        |
+| com.pinterest.ktlint.core.IndentConfig                   | com.pinterest.ktlint.rule.engine.core.api.IndentConfig                            |
+| com.pinterest.ktlint.core.Rule                           | com.pinterest.ktlint.rule.engine.core.api.Rule                                    |
+| com.pinterest.ktlint.core.RuleProvider                   | com.pinterest.ktlint.rule.engine.core.api.RuleProvider                            |
+
+Classes below have been moved from module `ktlint-core` to the new module `ktlint-rule-engine`:
+
+| Old class/package name in `ktlint-core`                  | New class/package name in `ktlint-rule-engine`                               |
+|----------------------------------------------------------|------------------------------------------------------------------------------|
+| com.pinterest.ktlint.core.api.EditorConfigDefaults       | com.pinterest.ktlint.rule.engine.api.EditorConfigDefaults                    |
+| com.pinterest.ktlint.core.api.EditorConfigOverride       | com.pinterest.ktlint.rule.engine.api.EditorConfigOverride                    |
+| com.pinterest.ktlint.core.api.KtLintParseException       | com.pinterest.ktlint.rule.engine.api.KtLintParseException                    |
+| com.pinterest.ktlint.core.api.KtLintRuleException        | com.pinterest.ktlint.rule.engine.api.KtLintRuleException                     |
+| com.pinterest.ktlint.core.KtLint                         | com.pinterest.ktlint.rule.engine.api.KtLintRuleEngine                        |
+| com.pinterest.ktlint.core.LintError                      | com.pinterest.ktlint.rule.engine.api.LintError                               |
+
+Class `com.pinterest.ktlint.core.KtLint.Code.CodeFile` has been replaced with factory method `com.pinterest.ktlint.rule.engine.api.Code.fromFile`. Likewise, class `com.pinterest.ktlint.core.KtLint.Code.CodeSnippet` has been replaced with factory method `com.pinterest.ktlint.rule.engine.api.Code.fromSnippet`.
+
+Class below has been moved from module `ktlint-core` to the new module `ktlint-cli-ruleset-core`:
+
+| Old class/package name in `ktlint-core`                  | New class/package name in `ktlint-cli-ruleset-core`                           |
+|----------------------------------------------------------|-------------------------------------------------------------------------------|
+| com.pinterest.ktlint.core.RuleSetProviderV2              | com.pinterest.ktlint.cli.ruleset.core.api.RuleSetProviderV3                   |
+
+
+Class below has been moved from module `ktlint-core` to the new module `ktlint-cli-reporter-core`:
+
+| Old class/package name in `ktlint-core`   | New class/package name in `ktlint-cli-reporter-core`     |
+|-------------------------------------------|----------------------------------------------------------|
+| com.pinterest.ktlint.core.KtlintVersion   | com.pinterest.ktlint.cli.reporter.core.api.KtlintVersion |
+
+Class below has been moved from module `ktlint-core` to the new module `ktlint-logger`:
+
+| Old class/package name in `ktlint-core`               | New class/package name in `ktlint-logger`                   |
+|-------------------------------------------------------|-------------------------------------------------------------|
+| com.pinterest.ktlint.core.KtLintKLoggerInitializer.kt | com.pinterest.ktlint.logger.api.KtLintKLoggerInitializer.kt |
+
+Class below has been relocated from module `ktlint-core` to module `ktlint-cli`:
+
+| Old class/package name in `ktlint-core` | New class/package name in `ktlint-cli` |
+|-----------------------------------------|----------------------------------------|
+| com.pinterest.ktlint.core.api.Baseline  | com.pinterest.ktlint.cli.api.Baseline  |
+
+Module `ktlint-reporter-baseline` has been renamed to `ktlint-cli-reporter-baseline`. Class below has been relocated:
+
+| Old class/package name in `ktlint-reporter-baseline` | New class/package name in `ktlint-cli-reporter-baseline` |
+|------------------------------------------------------|----------------------------------------------------------|
+| com.pinterest.ktlint.reporter.baseline               | com.pinterest.ktlint.cli.reporter.baseline               |
+
+Module `ktlint-reporter-checkstyle` has been renamed to `ktlint-cli-reporter-checkstyle`. Class below has been relocated:
+
+| Old class/package name in `ktlint-reporter-checkstyle` | New class/package name in `ktlint-cli-reporter-checkstyle` |
+|--------------------------------------------------------|------------------------------------------------------------|
+| com.pinterest.ktlint.reporter.checkstyle               | com.pinterest.ktlint.cli.reporter.checkstyle               |
+
+Module `ktlint-reporter-format` has been renamed to `ktlint-cli-reporter-format`. Class below has been relocated:
+
+| Old class/package name in `ktlint-reporter-format` | New class/package name in `ktlint-cli-reporter-format` |
+|----------------------------------------------------|--------------------------------------------------------|
+| com.pinterest.ktlint.reporter.format               | com.pinterest.ktlint.cli.reporter.format               |
+
+Module `ktlint-reporter-html` has been renamed to `ktlint-cli-reporter-html`. Class below has been relocated:
+
+| Old class/package name in `ktlint-reporter-html` | New class/package name in `ktlint-cli-reporter-html` |
+|--------------------------------------------------|------------------------------------------------------|
+| com.pinterest.ktlint.reporter.html               | com.pinterest.ktlint.cli.reporter.html               |
+
+Module `ktlint-reporter-json` has been renamed to `ktlint-cli-reporter-json`. Class below has been relocated:
+
+| Old class/package name in `ktlint-reporter-json` | New class/package name in `ktlint-cli-reporter-json` |
+|--------------------------------------------------|------------------------------------------------------|
+| com.pinterest.ktlint.reporter.json               | com.pinterest.ktlint.cli.reporter.json               |
+
+Module `ktlint-reporter-plain` has been renamed to `ktlint-cli-reporter-plain`. Class below has been relocated:
+
+| Old class/package name in `ktlint-reporter-plain` | New class/package name in `ktlint-cli-reporter-plain` |
+|---------------------------------------------------|-------------------------------------------------------|
+| com.pinterest.ktlint.reporter.plain               | com.pinterest.ktlint.cli.reporter.plain               |
+
+Module `ktlint-reporter-plain-summary` has been renamed to `ktlint-cli-reporter-plain-summary`. Class below has been relocated:
+
+| Old class/package name in `ktlint-reporter-plain-summary` | New class/package name in `ktlint-cli-reporter-plain-summary` |
+|-----------------------------------------------------------|---------------------------------------------------------------|
+| com.pinterest.ktlint.reporter.plain                       | com.pinterest.ktlint.cli.reporter.plainsummary                |
+
+Module `ktlint-reporter-sarif` has been renamed to `ktlint-cli-reporter-sarif`. Class below has been relocated:
+
+| Old class/package name in `ktlint-reporter-sarif` | New class/package name in `ktlint-cli-reporter-sarif` |
+|---------------------------------------------------|-------------------------------------------------------|
+| com.pinterest.ktlint.reporter.sarif               | com.pinterest.ktlint.cli.reporter.sarif               |
+
+#### Custom Ruleset Provider `RuleSetProviderV2`
+
+Custom rule sets build for older versions of KtLint are no longer supported by this version of KtLint. The `com.pinterest.ktlint.core.RuleSetProviderV2` interface has been replaced with `RuleSetProviderV3`. The accompanying interfaces `com.pinterest.ktlint.core.RuleProvider` and `com.pinterest.ktlint.core.Rule` have been replaced with `com.pinterest.ktlint.ruleset.core.api.RuleProvider` and `com.pinterest.ktlint.ruleset.core.api.Rule` respectively.
+
+Contrary to `RuleSetProviderV2`, the `RuleSetProviderV3` no longer contains information about the rule set. About information now has to be specified in the new `Rule` class. This allows custom rule set providers to combine rules originating from different rule sets into a new rule set without losing information about its origin. The type of the id of the rule set is changed from `String` to `RuleSetId`. 
+
+Note that due to renaming and relocation of the `RuleSetProviderV3` interface the name of the service provider in the custom reporter needs to be changed from `resources/META-INF/services/com.pinterest.ktlint.core.RuleSetProviderV2` to `resources/META-INF/services/com.pinterest.ktlint.cli.ruleset.core.api.RuleSetProviderV3`.
+
+The rule id's in `com.pinterest.ktlint.ruleset.core.api.Rule` have been changed from type `String` to `RuleId`. A `RuleId` has a value that must adhere the convention "`rule-set-id`:`rule-id`". The rule set id `standard` is reserved for rules which are maintained by the KtLint project. Rules created by custom rule set providers and API Consumers should use a prefix other than `standard` to mark the origin of rules which are not maintained by the KtLint project.
+
+When wrapping a rule from the ktlint project and modifying its behavior, please change the `ruleId` and `about` fields in the wrapped rule, so that it is clear to users whenever they use the original rule provided by KtLint versus a modified version which is not maintained by the KtLint project.
+
+The typealias `com.pinterest.ktlint.core.api.EditorConfigProperties` has been replaced with `com.pinterest.ktlint.rule.engine.core.api.EditorConfig`. The interface `com.pinterest.ktlint.core.api.UsesEditorConfigProperties` has been removed. Instead, the Rule property `usesEditorConfigProperties` needs to be set. As a result of those changes, the `beforeFirstNode` function in each rule has to changed to something like below:
+
+```kotlin
+ class SomeRule : Rule(
+  ruleId = RuleId("some-rule-set:some-rule"),
+  usesEditorConfigProperties = setOf(MY_EDITOR_CONFIG_PROPERTY),
+) {
+  private lateinit var myEditorConfigProperty: MyEditorConfigProperty
+
+  override fun beforeFirstNode(editorConfig: EditorConfig) {
+    myEditorConfigProperty = editorConfig[MY_EDITOR_CONFIG_PROPERTY]
+  }
+  
+  ...
+}
+```
+
+Fields `loadOnlyWhenOtherRuleIsLoaded` and `runOnlyWhenOtherRuleIsEnabled` have been removed from class `com.pinterest.ktlint.rule.engine.core.api.Rule.VisitorModifier.RunAfterRule` and are replaced with a single field `mode`. The `mode` either contains value `REGARDLESS_WHETHER_RUN_AFTER_RULE_IS_LOADED_OR_DISABLED` or `ONLY_WHEN_RUN_AFTER_RULE_IS_LOADED_AND_ENABLED`.
+
+#### Custom Reporter Provider `ReporterProvider`
+
+Custom Reporters build for older versions of KtLint are no longer supported by this version of KtLint. The `com.pinterest.ktlint.core.ReporterProvider` interface has been replaced with `com.pinterest.ktlint.cli.reporter.core.api.ReporterProviderV2`. The accompanying interface `com.pinterest.ktlint.core.Reporter` has been replaced with `com.pinterest.ktlint.cli.reporter.core.api.ReporterV2`.
+
+Note that due to renaming and relocation of the `ReporterProviderV2` interface the name of the service provider in the custom reporter needs to be changed from `resources/META-INF/services/com.pinterest.ktlint.core.ReporterProvider` to `resources/META-INF/services/com.pinterest.ktlint.cli.reporter.core.api.ReporterProviderV2`.
+
+The biggest change in the `ReporterV2` is the replacement of the `LintError` class with `KtlintCliError` class. The latter class now contains a status field which more clearly explains the difference between a lint error which can be autocorrected versus a lint error that actually has been autocorrected.
+
+#### Custom rules provided by API Consumer
+
+API Consumers provide a set of rules directly to the Ktlint Rule Engine. The `com.pinterest.ktlint.core.Rule` has been replaced with `com.pinterest.ktlint.ruleset.core.api.Rule`.
+
+The type of the rule id's has been changed from type `String` to `RuleId`. A `RuleId` has a value that must adhere to the convention "`rule-set-id`:`rule-id`". Rule set id `standard` is reserved for rules which are maintained by the KtLint project. Custom rules created by the API Consumer should use a prefix other than `standard` to clearly mark the origin of rules which are not maintained by the KtLint project.
+
+Also, the field `About` has been added. This field specifies the name of the maintainer, and the repository url and issue tracker url of the rule. The about information of a rule is printed whenever a rule throws an exception which is caught by the Ktlint Rule Engine.
+
+When wrapping a rule from the ktlint project and modifying its behavior, please change the `ruleId` and `about` fields in the wrapped rule, so that it is clear to users whenever they use the original rule provided by KtLint versus a modified version which is not maintained by the KtLint project.
+
+The typealias `com.pinterest.ktlint.core.api.EditorConfigProperties` has been replaced with `com.pinterest.ktlint.rule.engine.core.api.EditorConfig`. The interface `com.pinterest.ktlint.core.api.UsesEditorConfigProperties` has been removed. Instead, the Rule property `usesEditorConfigProperties` needs to be set. As a result of those changes, the `beforeFirstNode` function in each rule has to changed to something like below:
+
+```kotlin
+ class SomeRule : Rule(
+  ruleId = RuleId("some-rule-set:some-rule"),
+  usesEditorConfigProperties = setOf(MY_EDITOR_CONFIG_PROPERTY),
+) {
+  private lateinit var myEditorConfigProperty: MyEditorConfigProperty
+
+  override fun beforeFirstNode(editorConfig: EditorConfig) {
+    myEditorConfigProperty = editorConfig[MY_EDITOR_CONFIG_PROPERTY]
+  }
+
+  ...
+}
+```
+
+Fields `loadOnlyWhenOtherRuleIsLoaded` and `runOnlyWhenOtherRuleIsEnabled` have been removed from class `com.pinterest.ktlint.rule.engine.core.api.Rule.VisitorModifier.RunAfterRule` and are replaced with a single field `mode`. The `mode` either contains value `REGARDLESS_WHETHER_RUN_AFTER_RULE_IS_LOADED_OR_DISABLED` or `ONLY_WHEN_RUN_AFTER_RULE_IS_LOADED_AND_ENABLED`.
+
+Like before, the API Consumer can still offer a mix of rules originating from `ktlint-ruleset-standard` as well as custom rules.
+
+#### `.editorconfig` property `max_line_length` default value
+
+Previously, the default value for `.editorconfig` property `max_line_length` was set to `-1` in ktlint unless the property was defined explicitly in the `.editorconfig` or when `ktlint_code_style` was set to Android. As a result of that rules have to check that max_line_length contains a positive value before checking that the actual line length is exceeding the maximum. Now the value `Int.MAX_VALUE` (use constant `MAX_LINE_LENGTH_PROPERTY_OFF` to refer to that value) is used instead. 
+
+#### Psi filename replaces FILE_PATH_USER_DATA_KEY
+
+Constant `KtLint.FILE_PATH_USER_DATA_KEY` has been removed. The file path is passed correctly to the node with element type FILE and can be retrieved as follows:
+```kotlin
+if (node.isRoot()) {
+  val filePath = (node.psi as? KtFile)?.virtualFilePath
+    ...
+}
+```
+
+### Added
+
+* Add new code style `ktlint_offical`. The code style is work in progress and should be considered a preview. It is intended to become the default code style in the next release. Please try it out and give your feedback. See [code styles](https://pinterest.github.io/ktlint/rules/code-styles/) for more information. The following rules have been added to the `ktlint_official` code style (the rules can also be run for other code styles when enabled explicitly):
+  * Add new experimental rule `no-empty-first-line-in-class-body`. This rule disallows a class to start with a blank line.
+  * Add new experimental rule `if-else-bracing`. This rules enforces consistent usage of braces in all branches of a single if, if-else or if-else-if statement.
+  * Add new experimental rule `no-consecutive-comments`. This rule disallows consecutive comments except EOL comments (see [examples](See https://pinterest.github.io/ktlint/rules/experimental/#disallow-consecutive-comments)).
+  * Add new experimental rule `try-catch-finally-spacing`. This rule enforces consistent spacing in try-catch, try-finally and try-catch-finally statement. This rule can also be run for other code styles, but then it needs to be enabled explicitly.
+  * Add new experimental rule `no-blank-line-in-list`. This rule disallows blank lines to be used in super type lists, type argument lists, type constraint lists, type parameter lists, value argument lists, and value parameter lists. ([#1224](https://github.com/pinterest/ktlint/issues/1224))
+  * Add new experimental rule `multiline-expression-wrapping`. This forces a multiline expression as value in an assignment to start on a separate line. ([#1217](https://github.com/pinterest/ktlint/issues/1217))
+  * Add new experimental rule `string-template-indent`. This forces multiline string templates which are post-fixed with `.trimIndent()` to be formatted consistently. The opening and closing `"""` are placed on separate lines and the indentation of the content of the template is aligned with the `"""`. ([#925](https://github.com/pinterest/ktlint/issues/925))
+  * Add new experimental rule `if-else-wrapping`. This enforces that a single line if-statement is kept simple. A single line if-statement may contain no more than one else-branch. The branches a single line if-statement may not be wrapped in a block. ([#812](https://github.com/pinterest/ktlint/issues/812))
+* Wrap the type or value of a function or class parameter in case the maximum line length is exceeded `parameter-wrapping` ([#1846](https://github.com/pinterest/ktlint/pull/1846))
+* Wrap the type or value of a property in case the maximum line length is exceeded `property-wrapping` ([#1846](https://github.com/pinterest/ktlint/pull/1846))
+* Recognize Kotlin Script when linting and formatting code from `stdin` with KtLint CLI ([#1832](https://github.com/pinterest/ktlint/issues/1832))
+* Support Bill of Materials (BOM), now you can integrate Ktlint in your `build.gradle` like:
+  ```kotlin
+  dependencies {
+      implementation(platform("com.pinterest:ktlint-bom:0.49.0"))
+      implementation("com.pinterest:ktlint-core")
+      implementation("com.pinterest:ktlint-reporter-html")
+      implementation("com.pinterest:ktlint-ruleset-standard")
+      ...
+  }
+  ```
+* Add new experimental rule `enum-wrapping` for all code styles. An enum should either be a single line, or each enum entry should be defined on a separate line. ([#1903](https://github.com/pinterest/ktlint/issues/1903))
+
+### Removed
+
+* Remove support of the `.editorconfig` properties `disabled_rules` and `ktlint_disabled_rules`. See [disabled rules](https://pinterest.github.io/ktlint/rules/configuration-ktlint/#disabled-rules) for more information.
+* Remove CLI option `--print-ast`. Use IntelliJ IDEA PsiViewer plugin instead. ([#1925](https://github.com/pinterest/ktlint/issues/1925))
+
+### Fixed
+
+* An enumeration class having a primary constructor and in which the list of enum entries is followed by a semicolon then do not remove the semicolon in case it is followed by code element `no-semi` ([#1733](https://github.com/pinterest/ktlint/issues/1733))
+* Do not add the (first line of the) body expression on the same line as the function signature in case the max line length would be exceeded. `function-signature`. 
+* Do not add the first line of a multiline body expression on the same line as the function signature in case function body expression wrapping property is set to `multiline`. `function-signature`. 
+* Disable the `standard:filename` rule whenever Ktlint CLI is run with option `--stdin` ([#1742](https://github.com/pinterest/ktlint/issues/1742))
+* The parameters of a function literal containing a multiline parameter list are aligned with first parameter whenever the first parameter is on the same line as the start of that function literal (not allowed in `ktlint_official` code style) `indent` ([#1756](https://github.com/pinterest/ktlint/issues/1756))
+* Do not throw exception when enum class does not contain entries `trailing-comma-on-declaration-site` ([#1711](https://github.com/pinterest/ktlint/issues/1711))
+* Fix continuation indent for a dot qualified array access expression in `ktlint_official` code style only `indent` ([#1540](https://github.com/pinterest/ktlint/issues/1540))
+* When generating the `.editorconfig` use value `off` for the `max_line_length` property instead of value `-1` to denote that lines are not restricted to a maximum length ([#1824](https://github.com/pinterest/ktlint/issues/1824))
+* Do not report an "unnecessary semicolon" after adding a trailing comma to an enum class containing a code element after the last enum entry `trailing-comma-on-declaration-site` ([#1786](https://github.com/pinterest/ktlint/issues/1786))
+* A newline before a function return type should not be removed in case that leads to exceeding the maximum line length `function-return-type-spacing` ([#1764](https://github.com/pinterest/ktlint/issues/1764))
+* Wrap annotations on type arguments in same way as with other constructs `annotation`, `wrapping` ([#1725](https://github.com/pinterest/ktlint/issues/1725))
+* Fix indentation of try-catch-finally when catch or finally starts on a newline `indent` ([#1788](https://github.com/pinterest/ktlint/issues/1788))
+* Fix indentation of a multiline typealias `indent` ([#1788](https://github.com/pinterest/ktlint/issues/1788))
+* Fix false positive when multiple KDOCs exists between a declaration and another annotated declaration `spacing-between-declarations-with-annotations` ([#1802](https://github.com/pinterest/ktlint/issues/1802))
+* Fix false positive when a single line statement containing a block having exactly the maximum line length is preceded by a blank line `wrapping` ([#1808](https://github.com/pinterest/ktlint/issues/1808))
+* Fix false positive when a single line contains multiple dot qualified expressions and/or safe expressions `indent` ([#1830](https://github.com/pinterest/ktlint/issues/1830))
+* Enforce spacing around rangeUntil operator `..<` similar to the range operator `..` in `range-spacing`  ([#1858](https://github.com/pinterest/ktlint/issues/1858))
+* When `.editorconfig` property `ij_kotlin_imports_layout` contains a `|` but no import exists that match any pattern before the first `|` then do not report a violation nor insert a blank line `import-ordering` ([#1845](https://github.com/pinterest/ktlint/issues/1845))
+* When negate-patterns only are specified in Ktlint CLI then automatically add the default include patterns (`**/*.kt` and `**/*.kts`) so that all Kotlin files excluding the files matching the negate-patterns will be processed ([#1847](https://github.com/pinterest/ktlint/issues/1847))
+* Do not remove newlines from multiline type parameter lists `type-parameter-list-spacing` ([#1867](https://github.com/pinterest/ktlint/issues/1867))
+* Wrap each type parameter in a multiline type parameter list `wrapping` ([#1867](https://github.com/pinterest/ktlint/issues/1867))
+* Allow value arguments with a multiline expression to be indented on a separate line `indent` ([#1217](https://github.com/pinterest/ktlint/issues/1217))
+* When enabled, the ktlint rule checking is disabled for all code surrounded by the formatter tags (see [faq](https://pinterest.github.io/ktlint/faq/#are-formatter-tags-respected)) ([#670](https://github.com/pinterest/ktlint/issues/670)) 
+* Remove trailing comma if last two enum entries are on the same line and trailing commas are not allowed. `trailing-comma-on-declaration-site` ([#1905](https://github.com/pinterest/ktlint/issues/1905))
+* Wrap annotated function parameters to a separate line in code style `ktlint_official` only. `function-signature`, `parameter-list-wrapping` ([#1908](https://github.com/pinterest/ktlint/issues/1908))
+* Wrap annotated projection types in type argument lists to a separate line `annotation` ([#1909](https://github.com/pinterest/ktlint/issues/1909))
+* Add newline after adding trailing comma in parameter list of a function literal `trailing-comma-on-declaration-site` ([#1911](https://github.com/pinterest/ktlint/issues/1911))
+* Wrap annotations before class constructor in code style `ktlint_official`. `annotation` ([#1916](https://github.com/pinterest/ktlint/issues/1916))
+* Annotations on type projections should be wrapped in same way as other annotations `annotation` ([#1917](https://github.com/pinterest/ktlint/issues/1917))
+* An if-else followed by an elvis operator should not be wrapped in an else-block `multiline-if-else` ([#1904](https://github.com/pinterest/ktlint/issues/1904))
+
+### Changed
+* Wrap the parameters of a function literal containing a multiline parameter list (only in `ktlint_official` code style) `parameter-list-wrapping` ([#1681](https://github.com/pinterest/ktlint/issues/1681)).
+* KtLint CLI exits with an error in any of following cases (this list is not exhaustive):
+  - A custom ruleset jar is to be loaded and that jar contains a deprecated RuleSetProviderV2.
+  - A custom ruleset jar is to be loaded and that jar does not contain the required RuleSetProviderV3.
+  - A custom reporter jar is to be loaded and that jar contains a deprecated ReporterProvider.
+  - A custom reporter jar is to be loaded and that jar does not contain the required ReporterProviderV2.
+* Disable the default patterns if the option `--patterns-from-stdin` is specified ([#1793](https://github.com/pinterest/ktlint/issues/1793))
+* Update Kotlin development version to `1.8.20` and Kotlin version to `1.8.20`.
+* Revert to matrix build to speed up build, especially for the Windows related build ([#1787](https://github.com/pinterest/ktlint/pull/1787))
+* For the new code style `ktlint_official`, do not allow wildcard imports `java.util` and `kotlinx.android.synthetic` by default. Important: `.editorconfig` property `ij_kotlin_packages_to_use_import_on_demand` needs to be set to value `unset` in order to enforce IntelliJ IDEA default formatter to not generate wildcard imports `no-wildcard-imports` ([#1797](https://github.com/pinterest/ktlint/issues/1797))
+* Convert a single line block comment to an EOL comment if not preceded or followed by another code element on the same line `comment-wrapping` ([#1941](https://github.com/pinterest/ktlint/issues/1941))
+* Ignore a block comment inside a single line block `comment-wrapping` ([#1942](https://github.com/pinterest/ktlint/issues/1942))
+
+## [0.48.2] - 2023-01-21
+
+### Additional clarification on API Changes in `0.48.0` and `0.48.1`
+
+Starting with Ktlint `0.48.x`, rule and rule sets can be enabled/disabled with a separate property per rule (set). Please read [deprecation of (ktlint_)disable_rules property](https://pinterest.github.io/ktlint/faq/#why-is-editorconfig-property-disabled_rules-deprecated-and-how-do-i-resolve-this) for more information.
+
+API Consumers that provide experimental rules to the KtLintRuleEngine, must also enable the experimental rules or instruct their users to do so in the `.editorconfig` file. From the perspective of the API Consumer it might be confusing or unnecessary to do so as the experimental rule was already provided explicitly.
+
+Ktlint wants to provide the user (e.g. a developer) a uniform and consistent user experience. The `.editorconfig` becomes more and more central to store configuration for Ktlint. This to ensure that all team members use the exact same configuration when running ktlint regardless whether the Ktlint CLI or an API Consumer is being used.
+
+The `.editorconfig` is a powerful configuration tool which can be used in very different ways. Most projects use a single `.editorconfig` file containing one common section for kotlin and kotlin scripts files. For example, the `.editorconfig` file of the Ktlint project contains following section:
+```editorconfig
+[*.{kt,kts}]
+ij_kotlin_imports_layout = *
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_allow_trailing_comma_on_call_site = true
+```
+Other projects might contain multiple `.editorconfig` files for different parts of the project directory hierarchy. Or, use a single `.editorconfig` file containing multiple sections with different globs. Like all other configuration settings in Ktlint, the user should be able to enable and disable the experimental rules. Both for the entire set of experimental rules and for individual experimental rules.
+
+Ktlint allows API Consumers to set default values and override values for the `.editorconfig`. Specifying a default value means that the user does not need to define the property in the `.editorconfig` file but if the user specifies the value, it will take precedence. Specifying the override value ensures that this takes precedence on a value specified by the user in the `.editorconfig`.
+
+From the Ktlint perspective, it is advised that API Consumers provide the default value. See example below, for how to specify the `editorConfigDefault` property:
+```
+KtLintRuleEngine(
+    ruleProviders = ruleProviders,
+    editorConfigDefaults = EditorConfigDefaults(
+        EditorConfig
+            .builder()
+            .section(
+                Section
+                    .builder()
+                    .glob(Glob("*.{kt,kts}"))
+                    .properties(
+                        Property
+                            .builder()
+                            .name("ktlint_experimental")
+                            .value("enabled"),
+                    ),
+            )
+            .build()
+    )
+)
+```
+If the user has set property `ktlint_experimental` explicitly than that value will be used. If the value is not defined, the value provided via `editorConfigDefaults` will be used.
+
+If you do want to ignore the value of `ktlint_experimental` as set by the user, than you can set the EditorConfigOverride property. But as said before that is discouraged as the user might not understand why the `.editorconfig` property is being ignored (provided that the value set is not equal to the value provided by the API Consumer).
+
+### Added
+
+### Removed
+
+### Fixed
+* Fix with array-syntax annotations on the same line as other annotations `annotation` ([#1765](https://github.com/pinterest/ktlint/issues/1765))
+* Do not enable the experimental rules by default when `.editorconfig` properties `disabled_rules` or `ktlint_disabled_rules` are set. ([#1771](https://github.com/pinterest/ktlint/issues/1771))
+* A function signature not having any parameters which exceeds the `max-line-length` should be ignored by rule `function-signature` ([#1773](https://github.com/pinterest/ktlint/issues/1773))
+* Allow diacritics in names of classes, functions packages, and properties `class-naming`, `function-naming`, `package-name`, `property-naming` ([#1757](https://github.com/pinterest/ktlint/issues/1757))
+* Prevent violation of `file-name` rule on code snippets ([#1768](https://github.com/pinterest/ktlint/issues/1768))
+* Clarify that API Consumers have to enable experimental rules ([#1768](https://github.com/pinterest/ktlint/issues/1768))
+* Trim spaces in the `.editorconfig` property `ij_kotlin_imports_layout`'s entries ([#1770](https://github.com/pinterest/ktlint/pull/1770))
+
+### Changed
+
+## [0.48.1] - 2023-01-03
+
+### Added
+
+### Removed
+
+### Fixed
+
+* An enumeration class having a primary constructor and in which the list of enum entries is followed by a semicolon then do not remove the semicolon in case it is followed by code element `no-semi` ([#1733](https://github.com/pinterest/ktlint/issues/1733))
+* Add API so that KtLint API consumer is able to process a Kotlin script snippet without having to specify a file path ([#1738](https://github.com/pinterest/ktlint/issues/1738))
+* Disable the `standard:filename` rule whenever Ktlint CLI is run with option `--stdin` ([#1742](https://github.com/pinterest/ktlint/issues/1742))
+* Fix initialization of the logger when `--log-level` is specified. Throw exception when an invalid value is passed. ([#1749](https://github.com/pinterest/ktlint/issues/1749))
+* Fix loading of custom rule set JARs.
+* Rules provided via a custom rule set JAR (Ktlint CLI) or by an API provider are enabled by default. Only rules in the `experimental` rule set are disabled by default. ([#1747](https://github.com/pinterest/ktlint/issues/1747))
+
+### Changed
+
+* Update Kotlin development version to `1.8.0` and Kotlin version to `1.8.0`.
+
+## [0.48.0] - 2022-12-15
+
+### Indent rule
+
+The `indent` rule has been rewritten from scratch. Solving problems in the old algorithm was very difficult. With the new algorithm this becomes a lot easier. Although the new implementation of the rule has been compared against several open source projects containing over 400,000 lines of code, it is still likely that new issues will be discovered. Please report your indentation issues so that these can be fixed as well.
+
+### `.editorconfig` property to disable rules
+
+In the previous release (0.47.x), the `.editorconfig`  property `disabled_rules` was deprecated and replaced with `ktlint_disabled_rules`. This latter property has now been deprecated as well in favour of a more flexible and better maintainable solution. Rule and rule sets can now be enabled/disabled with a separate property per rule (set). Please read [deprecation of (ktlint_)disable_rules property](https://pinterest.github.io/ktlint/faq/#why-is-editorconfig-property-disabled_rules-deprecated-and-how-do-i-resolve-this) for more information.
+
+The KtLint CLI has not been changed. Although you can still use parameter `--experimental` to enable KtLint's Experimental rule set, you might want to set `.editorconfig` property `ktlint_experimental = enabled` instead.
+
+### API Changes & RuleSet providers
+
+If you are not an API consumer or Rule Set provider then you can skip this section.
+
+#### Class relocations
+
+Classes below have been relocated:
+
+* Class `com.pinterest.ktlint.core.api.UsesEditorConfigProperties.EditorConfigProperty` has been replaced with `com.pinterest.ktlint.core.api.editorconfig.EditorConfigProperty`. 
+* Class `com.pinterest.ktlint.core.KtLintParseException` has been replaced with `com.pinterest.ktlint.core.api.KtLintParseException`.
+* Class `com.pinterest.ktlint.core.RuleExecutionException` has been replaced with `com.pinterest.ktlint.core.api.KtLintRuleException`.
+* Class `com.pinterest.ktlint.reporter.format.internal.Color` has been moved to `com.pinterest.ktlint.reporter.format.Color`.
+* Class `com.pinterest.ktlint.reporter.plain.internal.Color` has been moved to `com.pinterest.ktlint.reporter.plain.Color`.
+
+#### Invoking `lint` and `format`
+
+This is the last release that supports the `ExperimentalParams` to invoke the `lint` and `format` functions of KtLint. The `ExperimentalParams` contains a mix of configuration settings which are not dependent on the file/code which is to be processed. Other parameters in that class describe the code/file to be processed but can be configured inconsistently (for example a file with name "foo.kt" could be marked as a Kotlin Script file).
+
+The static object `KtLint` is deprecated and replaced by class `KtLintRuleEngine` which is configured with `KtLintRuleEngineConfiguration`. The instance of the `KtLintRuleEngine` is intended to be reused for scanning all files in a project and should not be recreated per file.
+
+Both `lint` and `format` are simplified and can now be called for a code block or for an entire file.
+
+```kotlin
+import java.io.File
+
+// Define a reusable instance of the KtLint Rule Engine
+val ktLintRuleEngine = KtLintRuleEngine(
+  // Define configuration
+)
+
+
+// Process a collection of files
+val files: Set<File> // Collect files in a convenient way
+files.forEach(file in files) {
+    ktLintRuleEngine.lint(file) {
+        // Handle lint violations
+    }
+}
+
+// or process a code sample for a given filepath
+ktLintRuleEngine.lint(
+  code = "code to be linted",
+  filePath = Path("/path/to/source/file")
+) {
+  // Handle lint violations
+}
+```
+
+#### Retrieve `.editorconfig`s
+
+The list of `.editorconfig` files which will be accessed by KtLint when linting or formatting a given path can now be retrieved with the new API `KtLint.editorConfigFilePaths(path: Path): List<Path>`. 
+
+This API can be called with either a file or a directory. It's intended usage is that it is called once with the root directory of a project before actually linting or formatting files of that project. When called with a directory path, all `.editorconfig` files in the directory or any of its subdirectories (except hidden directories) are returned. In case the given directory does not contain an `.editorconfig` file or if it does not contain the `root=true` setting, the parent directories are scanned as well until a root `.editorconfig` file is found.
+
+Calling this API with a file path results in the `.editorconfig` files that will be accessed when processing that specific file. In case the directory in which the file resides does not contain an `.editorconfig` file or if it does not contain the `root=true` setting, the parent directories are scanned until a root `.editorconfig` file is found.
+
+#### Psi filename replaces FILE_PATH_USER_DATA_KEY
+
+Constant `KtLint.FILE_PATH_USER_DATA_KEY` is deprecated and will be removed in KtLint version 0.49.0. The file name will be passed correctly to the node with element type FILE and can be retrieved as follows:
+```kotlin
+if (node.isRoot()) {
+    val fileName = (node.psi as? KtFile)?.name
+    ...
+}
+```
+
+### Added
+* Wrap blocks in case the max line length is exceeded or in case the block contains a new line `wrapping` ([#1643](https://github.com/pinterest/ktlint/issues/1643))
+* patterns can be read in from `stdin` with the `--patterns-from-stdin` command line options/flags ([#1606](https://github.com/pinterest/ktlint/pull/1606))
+* Add basic formatting for context receiver in `indent` rule and new experimental rule `context-receiver-wrapping` ([#1672](https://github.com/pinterest/ktlint/issues/1672))
+* Add naming rules for classes and objects (`class-naming`), functions (`function-naming`) and properties (`property-naming`) ([#44](https://github.com/pinterest/ktlint/issues/44))
+* Add new built-in reporter `plain-summary` which prints a summary the number of violation which have been autocorrected or could not be autocorrected, both split by rule. 
+
+### Fixed
+
+* Let a rule process all nodes even in case the rule is suppressed for a node so that the rule can update the internal state ([#1644](https://github.com/pinterest/ktlint/issues/1644))
+* Read `.editorconfig` when running CLI with options `--stdin` and `--editorconfig` ([#1651](https://github.com/pinterest/ktlint/issues/1651))
+* Do not add a trailing comma in case a multiline function call argument is found but no newline between the arguments `trailing-comma-on-call-site` ([#1642](https://github.com/pinterest/ktlint/issues/1642))
+* Add missing `ktlint_disabled_rules` to exposed `editorConfigProperties` ([#1671](https://github.com/pinterest/ktlint/issues/1671))
+* Do not add a second trailing comma, if the original trailing comma is followed by a KDOC `trailing-comma-on-declaration-site` and `trailing-comma-on-call-site` ([#1676](https://github.com/pinterest/ktlint/issues/1676))
+* A function signature preceded by an annotation array should be handled similar as function preceded by a singular annotation `function-signature` ([#1690](https://github.com/pinterest/ktlint/issues/1690))
+* Fix offset of annotation violations
+* Fix line offset when blank line found between class and primary constructor
+* Remove needless blank line between class followed by EOL, and primary constructor
+* Fix offset of unexpected linebreak before assignment
+* Remove whitespace before redundant semicolon if the semicolon is followed by whitespace 
+
+### Changed
+* Update Kotlin development version to `1.8.0-RC` and Kotlin version to `1.7.21`.
+* The default value for trailing commas on call site is changed to `true` unless the `android codestyle` is enabled. Note that KtLint from a consistency viewpoint *enforces* the trailing comma on call site while default IntelliJ IDEA formatting only *allows* the trailing comma but leaves it up to the developer's discretion. ([#1670](https://github.com/pinterest/ktlint/pull/1670))
+* The default value for trailing commas on declaration site is changed to `true` unless the `android codestyle` is enabled. Note that KtLint from a consistency viewpoint *enforces* the trailing comma on declaration site while default IntelliJ IDEA formatting only *allows* the trailing comma but leaves it up to the developer's discretion. ([#1669](https://github.com/pinterest/ktlint/pull/1669))
+* CLI options `--debug`, `--trace`, `--verbose` and `-v` are replaced with `--log-level=<level>` or the short version `-l=<level>, see [CLI log-level](https://pinterest.github.io/ktlint/install/cli/#logging). ([#1632](https://github.com/pinterest/ktlint/issues/1632))
+* In CLI, disable logging entirely by setting `--log-level=none` or `-l=none` ([#1652](https://github.com/pinterest/ktlint/issues/1652))
+* Rewrite `indent` rule. Solving problems in the old algorithm was very difficult. With the new algorithm this becomes a lot easier. Although the new implementation of the rule has been compared against several open source projects containing over 400,000 lines of code, it is still likely that new issues will be discovered. Please report your indentation issues so that these can be fixed as well. ([#1682](https://github.com/pinterest/ktlint/pull/1682), [#1321](https://github.com/pinterest/ktlint/issues/1321), [#1200](https://github.com/pinterest/ktlint/issues/1200), [#1562](https://github.com/pinterest/ktlint/issues/1562), [#1563](https://github.com/pinterest/ktlint/issues/1563), [#1639](https://github.com/pinterest/ktlint/issues/1639))
+* Add methods "ASTNode.upsertWhitespaceBeforeMe" and "ASTNode.upsertWhitespaceAfterMe" as replacements for "LeafElement.upsertWhitespaceBeforeMe" and "LeafElement.upsertWhitespaceAfterMe". The new methods are more versatile and allow code to be written more readable in most places. ([#1687](https://github.com/pinterest/ktlint/pull/1687))
+* Rewrite `indent` rule. Solving problems in the old algorithm was very difficult. With the new algorithm this becomes a lot easier. Although the new implementation of the rule has been compared against several open source projects containing over 400,000 lines of code, it is still likely that new issues will be discovered. Please report your indentation issues so that these can be fixed as well. ([#1682](https://github.com/pinterest/ktlint/pull/1682), [#1321](https://github.com/pinterest/ktlint/issues/1321), [#1200](https://github.com/pinterest/ktlint/issues/1200), [#1562](https://github.com/pinterest/ktlint/issues/1562), [#1563](https://github.com/pinterest/ktlint/issues/1563), [#1639](https://github.com/pinterest/ktlint/issues/1639), [#1688](https://github.com/pinterest/ktlint/issues/1688))
+* Add support for running tests on `java 19`, remove support for running tests on `java 18`.
+* Update `io.github.detekt.sarif4k:sarif4k` version to `0.2.0` ([#1701](https://github.com/pinterest/ktlint/issues/1701)).
+
+## [0.47.1] - 2022-09-07
+
+### Fixed
+* Do not add trailing comma in empty parameter/argument list with comments (`trailing-comma-on-call-site`, `trailing-comma-on-declaration-site`) ([#1602](https://github.com/pinterest/ktlint/issues/1602))
+* Fix class cast exception when specifying a non-string editorconfig setting in the default ".editorconfig" ([#1627](https://github.com/pinterest/ktlint/issues/1627))
+* Fix indentation before semi-colon when it is pushed down after inserting a trailing comma  ([#1609](https://github.com/pinterest/ktlint/issues/1609))
+* Do not show deprecation warning about property "disabled_rules" when using CLi-parameter `--disabled-rules` ([#1599](https://github.com/pinterest/ktlint/issues/1599))
+* Traversing directory hierarchy at Windows ([#1600](https://github.com/pinterest/ktlint/issues/1600))
+* Ant-style path pattern support ([#1601](https://github.com/pinterest/ktlint/issues/1601))
+* Apply `@file:Suppress` on all toplevel declarations ([#1623](https://github.com/pinterest/ktlint/issues/1623)) 
+
+### Changed
+* Display warning instead of error when no files are matched, and return with exit code 0. ([#1624](https://github.com/pinterest/ktlint/issues/1624))
+
+## [0.47.0] - 2022-08-19
+
+### API Changes & RuleSet providers
+
+If you are not an API consumer nor a RuleSet provider, then you can safely skip this section. Otherwise, please read below carefully and upgrade your usage of ktlint. In this and coming releases, we are changing and adapting important parts of our API in order to increase maintainability and flexibility for future changes. Please avoid skipping a releases as that will make it harder to migrate.
+
+#### Rule lifecycle hooks / deprecate RunOnRootOnly visitor modifier
+
+Up until ktlint 0.46 the Rule class provided only one life cycle hook. This "visit" hook was called in a depth-first-approach on all nodes in the file. A rule like the IndentationRule used the RunOnRootOnly visitor modifier to call this lifecycle hook for the root node only in combination with an alternative way of traversing the ASTNodes. Downside of this approach was that suppression of the rule on blocks inside a file was not possible ([#631](https://github.com/pinterest/ktlint/issues/631)). More generically, this applied to all rules, applying alternative traversals of the AST.
+
+The Rule class now offers new life cycle hooks:
+* beforeFirstNode: This method is called once before the first node is visited. It can be used to initialize the state of the rule before processing of nodes starts. The ".editorconfig" properties (including overrides) are provided as parameter.
+* beforeVisitChildNodes: This method is called on a node in AST before visiting its child nodes. This is repeated recursively for the child nodes resulting in a depth first traversal of the AST. This method is the equivalent of the "visit" life cycle hooks. However, note that in KtLint 0.48, the UserData of the rootnode no longer provides access to the ".editorconfig" properties. This method can be used to emit Lint Violations and to autocorrect if applicable.
+* afterVisitChildNodes: This method is called on a node in AST after all its child nodes have been visited. This method can be used to emit Lint Violations and to autocorrect if applicable.
+* afterLastNode: This method is called once after the last node in the AST is visited. It can be used for teardown of the state of the rule.
+
+Optionally, a rule can stop the traversal of the remainder of the AST whenever the goal of the rule has been achieved. See KDoc on Rule class for more information.
+
+The "visit" life cycle hook will be removed in Ktlint 0.48. In KtLint 0.47 the "visit" life cycle hook will be called *only* when hook "beforeVisitChildNodes" is not overridden. It is recommended to migrate to the new lifecycle hooks in KtLint 0.47. Please create an issue, in case you need additional assistance to implement the new life cycle hooks in your rules.
+
+
+#### Ruleset providing by Custom Rule Set Provider
+
+The KtLint engine needs a more fine-grained control on the instantiation of new Rule instances. Currently, a new instance of a rule can be created only once per file. However, when formatting files the same rule instance is reused for a second processing iteration in case a Lint violation has been autocorrected. By re-using the same rule instance, state of that rule might leak from the first to the second processing iteration.
+
+Providers of custom rule sets have to migrate the custom rule set JAR file. The current RuleSetProvider interface which is implemented in the custom rule set is deprecated and marked for removal in KtLint 0.48. Custom rule sets using the old RuleSetProvider interface will not be run in KtLint 0.48 or above.
+
+For now, it is advised to implement the new RuleSetProviderV2 interface without removing the old RuleSetProvider interface. In this way, KtLint 0.47 and above use the RuleSetProviderV2 interface and ignore the old RuleSetProvider interface completely. KtLint 0.46 and below only use the old RuleSetProvider interface.
+
+Adding the new interface is straight forward, as can be seen below:
+
+```
+// Current implementation
+public class CustomRuleSetProvider : RuleSetProvider {
+    override fun get(): RuleSet = RuleSet(
+        "custom",
+        CustomRule1(),
+        CustomRule2(),
+    )
+}
+
+// New implementation
+public class CustomRuleSetProvider :
+    RuleSetProviderV2(CUSTOM_RULE_SET_ID),
+    RuleSetProvider {
+    override fun get(): RuleSet =
+        RuleSet(
+            CUSTOM_RULE_SET_ID,
+            CustomRule1(),
+            CustomRule2()
+        )
+
+    override fun getRuleProviders(): Set<RuleProvider> =
+        setOf(
+            RuleProvider { CustomRule1() },
+            RuleProvider { CustomRule2() }
+        )
+
+    private companion object {
+        const val CUSTOM_RULE_SET_ID = custom"
+    }
+}
+
+```
+
+Also note that file 'resource/META-INF/services/com.pinterest.ktlint.core.RuleSetProviderV2' needs to be added. In case your custom rule set provider implements both RuleSetProvider and RuleSetProviderV2, the resource directory contains files for both implementation. The content of those files is identical as the interfaces are implemented on the same class.
+
+Once above has been implemented, rules no longer have to clean up their internal state as the KtLint rule engine can request a new instance of the Rule at any time it suspects that the internal state of the Rule is tampered with (e.g. as soon as the Rule instance is used for traversing the AST).
+
+#### Rule set providing by API Consumer
+
+The KtLint engine needs a more fine-grained control on the instantiation of new Rule instances. Currently, a new instance of a rule can be created only once per file. However, when formatting files the same rule instance is reused for a second processing iteration in case a Lint violation has been autocorrected. By re-using the same rule instance, state of that rule might leak from the first to the second processing iteration.
+
+The ExperimentalParams parameter which is used to invoke "KtLint.lint" and "KtLint.format" contains a new parameter "ruleProviders" which will replace the "ruleSets" parameter in KtLint 0.48. Exactly one of those parameters should be a non-empty set. It is preferred that API consumers migrate to using "ruleProviders".
+
+```
+// Old style using "ruleSets"
+KtLint.format(
+    KtLint.ExperimentalParams(
+        ...
+        ruleSets = listOf(
+            RuleSet(
+                "custom",
+                CustomRule1(),
+                CustomRule2()
+            )
+        ),
+        ...
+    )
+)
+
+// New style using "ruleProviders"
+KtLint.format(
+    KtLint.ExperimentalParams(
+        ...
+        ruleProviders = setOf(
+            RuleProvider { CustomRule1() },
+            RuleProvider { CustomRule2() }
+        ),
+        cb = { _, _ -> }
+    )
+)
+```
+
+Once above has been implemented, rules no longer have to clean up their internal state as the KtLint rule engine can request a new instance of the Rule at any time it suspects that the internal state of the Rule is tampered with (e.g. as soon as the Rule instance is used for traversing the AST).
+
+#### Format callback
+
+The callback function provided as parameter to the format function is now called for all errors regardless whether the error has been autocorrected. Existing consumers of the format function should now explicitly check the `autocorrected` flag in the callback result and handle it appropriately (in most case this will be ignoring the callback results for which `autocorrected` has value `true`).
+
+#### CurrentBaseline
+
+Class `com.pinterest.ktlint.core.internal.CurrentBaseline` has been replaced with `com.pinterest.ktlint.core.api.Baseline`.
+
+Noteworthy changes:
+* Field `baselineRules` (nullable) is replaced with `lintErrorsPerFile (non-nullable).
+* Field `baselineGenerationNeeded` (boolean) is replaced with `status` (type `Baseline.Status`).
+
+The utility functions provided via `com.pinterest.ktlint.core.internal.CurrentBaseline` are moved to the new class. One new method `List<LintError>.doesNotContain(lintError: LintError)` is added.
+
+#### .editorconfig property "disabled_rules"
+
+The `.editorconfig` property `disabled_rules` (api property `DefaultEditorConfigProperties.disabledRulesProperty`) has been deprecated and will be removed in a future version. Use `ktlint_disabled_rules` (api property `DefaultEditorConfigProperties.ktlintDisabledRulesProperty`) instead as it more clearly identifies that ktlint is the owner of the property. This property is to be renamed in `.editorconfig` files and `ExperimentalParams.editorConfigOverride`.   
+
+Although, Ktlint 0.47.0 falls back on property `disabled_rules` whenever `ktlint_disabled_rules` is not found, this result in a warning message being printed. 
+
+#### Default/alternative .editorconfig
+
+Parameter "ExperimentalParams.editorConfigPath" is deprecated in favor of the new parameter "ExperimentalParams.editorConfigDefaults". When used in the old implementation this resulted in ignoring all ".editorconfig" files on the path to the file. The new implementation uses properties from the "editorConfigDefaults"parameter only when no ".editorconfig" files on the path to the file supplies this property for the filepath.
+
+API consumers can easily create the EditConfigDefaults by calling
+"EditConfigDefaults.load(path)" or creating it programmatically.
+
+#### Reload of `.editorconfig` file
+
+Some API Consumers keep a long-running instance of the KtLint engine alive. In case an `.editorconfig` file is changed, which was already loaded into the internal cache of the KtLint engine this change would not be taken into account by KtLint. One way to deal with this, was to clear the entire KtLint cache after each change in an `.editorconfig` file.
+
+Now, the API consumer can reload an `.editorconfig`. If the `.editorconfig` with given path is actually found in the cached, it will be replaced with the new value directly. If the file is not yet loaded in the cache, loading will be deferred until the file is actually requested again.
+
+Example:
+```kotlin
+KtLint.reloadEditorConfigFile("/some/path/to/.editorconfig")
+```
+
+#### Miscellaneous
+
+Several methods for which it is unlikely that they are used by API consumers have been marked for removal from the public API in KtLint 0.48.0. Please create an issue in case you have a valid business case to keep such methods in the public API.
+
+### Added
+
+* Add `format` reporter. This reporter prints a one-line-summary of the formatting status per file. ([#621](https://github.com/pinterest/ktlint/issues/621)).
+
+### Fixed
+
+* Fix cli argument "--disabled_rules" ([#1520](https://github.com/pinterest/ktlint/issues/1520)).
+* A file which contains a single top level declaration of type function does not need to be named after the function but only needs to adhere to the PascalCase convention. `filename` ([#1521](https://github.com/pinterest/ktlint/issues/1521)).
+* Disable/enable IndentationRule on blocks in middle of file. (`indent`) [#631](https://github.com/pinterest/ktlint/issues/631)
+* Allow usage of letters with diacritics in enum values and filenames (`enum-entry-name-case`, `filename`) ([#1530](https://github.com/pinterest/ktlint/issues/1530)).
+* Fix resolving of Java version when JAVA_TOOL_OPTIONS is set ([#1543](https://github.com/pinterest/ktlint/issues/1543))
+* When a glob is specified then ensure that it matches files in the current directory and not only in subdirectories of the current directory ([#1533](https://github.com/pinterest/ktlint/issues/1533)).
+* Execute `ktlint` cli on default kotlin extensions only when an (existing) path to a directory is given. ([#917](https://github.com/pinterest/ktlint/issues/917)).
+* Invoke callback on `format` function for all errors including errors that are autocorrected ([#1491](https://github.com/pinterest/ktlint/issues/1491))
+* Merge first line of body expression with function signature only when it fits on the same line `function-signature` ([#1527](https://github.com/pinterest/ktlint/issues/1527))
+* Add missing whitespace when else is on same line as true condition `multiline-if-else` ([#1560](https://github.com/pinterest/ktlint/issues/1560))
+* Fix multiline if-statements `multiline-if-else` ([#828](https://github.com/pinterest/ktlint/issues/828))
+* Prevent class cast exception on ".editorconfig" property `ktlint_code_style`  ([#1559](https://github.com/pinterest/ktlint/issues/1559))
+* Handle trailing comma in enums `trailing-comma` ([#1542](https://github.com/pinterest/ktlint/pull/1542))
+* Allow EOL comment after annotation ([#1539](https://github.com/pinterest/ktlint/issues/1539))
+* Split rule `trailing-comma` into `trailing-comma-on-call-site` and `trailing-comma-on-declaration-site` ([#1555](https://github.com/pinterest/ktlint/pull/1555))
+* Support globs containing directories in the ".editorconfig" supplied via CLI "--editorconfig"  ([#1551](https://github.com/pinterest/ktlint/pull/1551))
+* Fix indent of when entry with a dot qualified expression instead of simple value when trailing comma is required ([#1519](https://github.com/pinterest/ktlint/pull/1519))
+* Fix whitespace between trailing comma and arrow in when entry when trailing comma is required ([#1519](https://github.com/pinterest/ktlint/pull/1519))
+* Prevent false positive in parameter list for which the last value parameter is a destructuring declaration followed by a trailing comma `wrapping` ([#1578](https://github.com/pinterest/ktlint/issues/1578))
+
+### Changed
+
+* Print an error message and return with non-zero exit code when no files are found that match with the globs ([#629](https://github.com/pinterest/ktlint/issues/629)).
+* Invoke callback on `format` function for all errors including errors that are autocorrected ([#1491](https://github.com/pinterest/ktlint/issues/1491))
+* Improve rule `annotation` ([#1574](https://github.com/pinterest/ktlint/pull/1574))
+* Rename `.editorconfig` property `disabled_rules` to `ktlint_disabled_rules` ([#701](https://github.com/pinterest/ktlint/issues/701))
+* Allow file and directory paths in CLI-parameter "--editorconfig" ([#1580](https://github.com/pinterest/ktlint/pull/1580))
+* Update Kotlin development version to `1.7.20-beta` and Kotlin version to `1.7.10`.
+* Update release scripting to set version number in mkdocs documentation ([#1575](https://github.com/pinterest/ktlint/issues/1575)).
+* Update Gradle to `7.5.1` version
+
+### Removed
+* Remove support to generate IntelliJ IDEA configuration files as this no longer fits the scope of the ktlint project ([#701](https://github.com/pinterest/ktlint/issues/701))
+
+## [0.46.1] - 2022-06-21
+
+Minor release to address some regressions introduced in 0.46.0
+
+### Fixed
+
+* Remove experimental flag `-Xuse-k2` as it forces API Consumers to compile their projects with this same flag ([#1506](https://github.com/pinterest/ktlint/pull/1506)).
+* Account for separating spaces when parsing the disabled rules ([#1508](https://github.com/pinterest/ktlint/pull/1508)). 
+* Do not remove space before a comment in a parameter list ([#1509](https://github.com/pinterest/ktlint/issues/1509)). 
+* A delegate property which starts on the same line as the property declaration should not have an extra indentation `indent` ([#1510](https://github.com/pinterest/ktlint/pull/1510))
+
+## [0.46.0] - 2022-06-18
 
 ### Promoting experimental rules to standard 
 
@@ -15,7 +1551,7 @@ The rules below are promoted from the `experimental` ruleset to the `standard` r
 * `multiline-if-else`
 * `no-empty-first-line-in-method-block`
 * `package-name`
-* `traling-comma`
+* `trailing-comma`
 * `spacing-around-angle-brackets`
 * `spacing-between-declarations-with-annotations`
 * `spacing-between-declarations-with-comments`
@@ -101,14 +1637,12 @@ An AssertJ style API for testing KtLint rules ([#1444](https://github.com/pinter
 
 
 ### Changed
-- Update Kotlin development version to `1.7.0-RC2` and Kotlin version to `1.6.21`.
+- Update Kotlin development version to `1.7.0` and Kotlin version to `1.7.0`.
 - Update shadow plugin to `7.1.2` release
 - Update picocli to `4.6.3` release
-- Simplified rule `filename`. Only when the file contains a single class (including data class, enum class and sealed class) or a single interface, the file name should be identical to that class/interface. In all other cases the file name should be a descriptive name compliant with the PascalCase convention ([#1004](https://github.com/pinterest/ktlint/pull/1117))
+- A file containing only one (non private) top level declaration (class, interface, object, type alias or function) must be named after that declaration. The name also must comply with the Pascal Case convention. The same applies to a file containing one single top level class declaration and one or more extension functions for that class. `filename` ([#1004](https://github.com/pinterest/ktlint/pull/1117))
 - Promote experimental rules to standard rules set: `annotation`, `annotation-spacing`, `argument-list-wrapping`, `double-colon-spacing`, `enum-entry-name-case`, `multiline-if-else`, `no-empty-first-line-in-method-block`, `package-name`, `traling-comma`, `spacing-around-angle-brackets`, `spacing-between-declarations-with-annotations`, `spacing-between-declarations-with-comments`, `unary-op-spacing` ([#1481](https://github.com/pinterest/ktlint/pull/1481))
 - The CLI parameter `--android` can be omitted when the `.editorconfig` property `ktlint_code_style = android` is defined
- 
-### Removed
 
 ## [0.45.2] - 2022-04-06
 
@@ -338,12 +1872,12 @@ Special thanks to [t-kameyama](https://github.com/t-kameyama) for the huge numbe
 - Fix wrong indentation in named arguments (`indent`) ([#964](https://github.com/pinterest/ktlint/issues/964))
 - Fix wrong indentation when a function has multiline type arguments (`parameter-list-wrapping`) ([#965](https://github.com/pinterest/ktlint/issues/965))
 - Fix false positive for `spacing-between-declarations-with-annotations` ([#970](https://github.com/pinterest/ktlint/issues/970))
-- Fix ParseException when an assigment contains comments (`no-line-break-before-assignment`) ([#956](https://github.com/pinterest/ktlint/issues/956))
+- Fix ParseException when an assignment contains comments (`no-line-break-before-assignment`) ([#956](https://github.com/pinterest/ktlint/issues/956))
 - Fix false positive when right brace is after a try-catch block (`spacing-around-keyword`) ([#978](https://github.com/pinterest/ktlint/issues/978))
 - Fix false positive for control flow with empty body (`no-semicolons`) ([#955](https://github.com/pinterest/ktlint/issues/955))
 - Fix incorrect indentation for multi-line call expressions in conditions (`indent`) ([#959](https://github.com/pinterest/ktlint/issues/959))
 - Fix false positive for trailing comma before right parentheses|bracket|angle (`spacing-around-comma`) ([#975](https://github.com/pinterest/ktlint/issues/975))
-- Fix ktlint CLI could skip checking some of explicetly passed files ([#942](https://github.com/pinterest/ktlint/issues/942))
+- Fix ktlint CLI could skip checking some of explicitly passed files ([#942](https://github.com/pinterest/ktlint/issues/942))
 
 ### Changed
 - 'import-ordering' now supports `.editorconfig' default value generation ([#701](https://github.com/pinterest/ktlint/issues/701))
@@ -958,8 +2492,8 @@ path/to/file.kt
 path/to/another-file.kt
   1:10 Unnecessary semicolon.
 ```   
-- [string-template](https://ktlint.github.io/#rule-string-template),  
-[no-empty-class-body](https://ktlint.github.io/#rule-empty-class-body),  
+- [string-template](https://pinterest.github.io/ktlint/rules/standard/#string-template),  
+[no-empty-class-body](https://pinterest.github.io/ktlint/rules/standard/#no-empty-class-bodies),  
 max-line-length ([#47](https://github.com/shyiko/ktlint/issues/47)),  
 final-newline (activated only if `insert_final_newline` is set in `.editorconfig` (under `[*.{kt,kts}]`)) rules.
 - `--limit` CLI option (e.g. use `--limit=10` to limit the number of errors to display).
@@ -1020,8 +2554,8 @@ set in `[*{kt,kts}]` section).
 
 ### Added
 
-- [no-unit-return](https://ktlint.github.io/#rule-unit-return) rule.
-- [modifier-order](https://ktlint.github.io/#rule-modifier-order) rule ([#42](https://github.com/shyiko/ktlint/issues/42)).
+- [no-unit-return](https://pinterest.github.io/ktlint/rules/standard/#no-unit-as-return-type) rule.
+- [modifier-order](https://pinterest.github.io/ktlint/rules/standard/#modifier-order) rule ([#42](https://github.com/shyiko/ktlint/issues/42)).
 - `else/catch/finally` on the same line as `}` check (now part of "keyword-spacing" rule).
 - `ktlint-intellij-idea-integration` binary for easy Intellij IDEA config injection.
 
@@ -1111,6 +2645,27 @@ set in `[*{kt,kts}]` section).
 
 ## 0.1.0 - 2016-07-27
 
+[1.5.0]: https://github.com/pinterest/ktlint/compare/1.5.0...1.4.1
+[1.4.1]: https://github.com/pinterest/ktlint/compare/1.4.1...1.4.0
+[1.4.0]: https://github.com/pinterest/ktlint/compare/1.4.0...1.3.1
+[1.3.1]: https://github.com/pinterest/ktlint/compare/1.3.1...1.3.0
+[1.3.0]: https://github.com/pinterest/ktlint/compare/1.3.0...1.2.1
+[1.2.1]: https://github.com/pinterest/ktlint/compare/1.2.1...1.2.0
+[1.2.0]: https://github.com/pinterest/ktlint/compare/1.2.0...1.1.1
+[1.1.1]: https://github.com/pinterest/ktlint/compare/1.1.1...1.1.0
+[1.1.0]: https://github.com/pinterest/ktlint/compare/1.0.1...1.1.0
+[1.0.1]: https://github.com/pinterest/ktlint/compare/1.0.0...1.0.1
+[1.0.0]: https://github.com/pinterest/ktlint/compare/0.50.0...1.0.0
+[0.50.0]: https://github.com/pinterest/ktlint/compare/0.49.1...0.50.0
+[0.49.1]: https://github.com/pinterest/ktlint/compare/0.49.0...0.49.1
+[0.49.0]: https://github.com/pinterest/ktlint/compare/0.48.2...0.49.0
+[0.48.2]: https://github.com/pinterest/ktlint/compare/0.48.1...0.48.2
+[0.48.1]: https://github.com/pinterest/ktlint/compare/0.48.0...0.48.1
+[0.48.0]: https://github.com/pinterest/ktlint/compare/0.47.1...0.48.0
+[0.47.1]: https://github.com/pinterest/ktlint/compare/0.47.0...0.47.1
+[0.47.0]: https://github.com/pinterest/ktlint/compare/0.46.1...0.47.0
+[0.46.1]: https://github.com/pinterest/ktlint/compare/0.46.0...0.46.1
+[0.46.0]: https://github.com/pinterest/ktlint/compare/0.45.2...0.46.0
 [0.45.2]: https://github.com/pinterest/ktlint/compare/0.45.1...0.45.2
 [0.45.1]: https://github.com/pinterest/ktlint/compare/0.45.0...0.45.1
 [0.45.0]: https://github.com/pinterest/ktlint/compare/0.44.0...0.45.0

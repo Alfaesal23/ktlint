@@ -1,13 +1,13 @@
 plugins {
-    `ktlint-kotlin-common`
-    `ktlint-publication`
+    id("ktlint-publication-library")
 }
 
 dependencies {
-    api(projects.ktlintCore)
-    api(projects.ktlintRulesetTest)
-    api(projects.ktlintTestLogging)
+    implementation(projects.ktlintLogger)
+    implementation(projects.ktlintRuleEngine)
+    implementation(projects.ktlintCliRulesetCore)
     api(libs.assertj)
-
-    implementation(libs.junit5)
+    api(libs.junit5)
+    api(libs.janino)
+    api(libs.jimfs)
 }
